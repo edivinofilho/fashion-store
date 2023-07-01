@@ -9,3 +9,7 @@ export interface IProduct {
   description: string;
   image?: string;
 }
+
+export interface IRemoveProduct {
+  removeProduct: (itemId: number)=> void;
+}

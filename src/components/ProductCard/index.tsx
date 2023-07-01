@@ -5,6 +5,8 @@ import { IProduct } from "../../providers/ProductsContext/@types"
 
 export const ProductCard = () => {
   const productList: IProduct[] | null = useContext(ProductContext).productList
+
+  const { removeProduct } = useContext(ProductContext)
   
   return (
     <>
@@ -14,7 +16,7 @@ export const ProductCard = () => {
           <p>{product.name}</p>
           <p>{product.price}</p>
           <button>Editar</button>
-          <button>Remover</button>
+          <button onClick={() => removeProduct(product.id)}>Remover</button>
         </li>
       )) : null}
     </>
