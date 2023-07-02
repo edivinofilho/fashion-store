@@ -6,7 +6,7 @@ export const AdminDashboardWelcomePage = () => {
     <>
       <h1>LOGO</h1>
       <NavAdminBar />
-      <Header title='PAINEL DO ADMINISTRADOR' message='Seja bem vindo, administrador!'/>
+      <Header title="PAINEL DO ADMINISTRADOR" message="Seja bem vindo, administrador!"/>
       
       <main>
       </main>
