@@ -1,9 +1,11 @@
-import { ProductCard } from "../ProductCard"
+interface IProductList {
+  children: React.ReactNode;
+}
 
-export const ProductList = () => {
+export const ProductList = ({children} : IProductList) => {
   return (
     <ul>
-      <ProductCard />
+      {children}
     </ul>
   )
 }
