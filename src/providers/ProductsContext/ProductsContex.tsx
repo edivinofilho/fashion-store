@@ -1,18 +1,19 @@
 import { createContext, useState, useEffect } from "react"
 import { api } from "../../services/api"
-import { IProduct, IProductProviderProps } from "./@types"
+import { IProduct, IProductProviderProps, IProductContextValue } from "./@types"
+import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema"
 
-interface IProductContextValue {
-  productList: IProduct[] | null;
-  removeProduct: (itemId: number) => void;
-}
 
 export const ProductContext = createContext<IProductContextValue>({
   productList: null,
   removeProduct: (itemId: number) => {},
+  isModalNewProductOpen: false,
+  setIsModalNewProductsOpen: () => {},
+  submitAddNewProduct: async (formData: TAddNewProductForm) => {},
 })
 
 export const ProductsProvider = ({ children }:IProductProviderProps) => {
+  const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
 
   const [productList, setProductList] = useState<IProduct[] | null>(null)
 
@@ -35,9 +36,8 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }, [])
 
   const removeProduct = async (itemId : number) => {
-    // const token = localStorage.getItem('@TOKEN')
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTY4ODI0OTU1OCwiZXhwIjoxNjg4MjUzMTU4LCJzdWIiOiIyIn0.4NNMXWK51J7Jti4eKA0uGw95mJAp5uF2zP6CG0-zIcA'
-
+    const token = localStorage.getItem('@TOKEN')
+   
     if(productList !== null){
       try {
         api.delete(`/products/${itemId}`, {
@@ -58,8 +58,27 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
   } 
 
+  const submitAddNewProduct = async (formData: TAddNewProductForm) : Promise<void> => {
+    const token = localStorage.getItem('@TOKEN')
+
+    try {
+      const { data } = await api.post("/products", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      const updatedProductList = productList ? [...productList, data] : null
+      setProductList(updatedProductList)
+      setIsModalNewProductsOpen(false)
+
+    } catch (error){
+      console.log(error)
+      setIsModalNewProductsOpen(false)
+    }
+  }
+
   return (
-    <ProductContext.Provider value={{ productList, removeProduct}}>
+    <ProductContext.Provider value={{ productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct}}>
       { children }
     </ProductContext.Provider>
   )
