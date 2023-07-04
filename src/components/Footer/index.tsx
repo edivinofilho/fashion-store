@@ -1,6 +1,6 @@
 import { FooterStyled } from "./styles.ts"
 
-export function FooterDefault() {
+export const FooterDefault = () => {
 
     return (
         <FooterStyled>
