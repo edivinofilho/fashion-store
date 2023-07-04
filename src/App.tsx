@@ -8,6 +8,7 @@ import { defaultTheme, themeDark } from './styles/theme.ts';
 export const App = () => {
 
   const [colorMode, setColorMode] = useState("light");
+  
    return (
     <>
       <ThemeProvider theme={colorMode === "light" ? defaultTheme : themeDark}>
