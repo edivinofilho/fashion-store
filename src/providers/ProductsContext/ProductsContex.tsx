@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react"
 import { api } from "../../services/api"
 import { IProduct, IProductProviderProps, IProductContextValue } from "./@types"
 import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema"
+import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
 
 
 export const ProductContext = createContext<IProductContextValue>({
@@ -10,10 +11,15 @@ export const ProductContext = createContext<IProductContextValue>({
   isModalNewProductOpen: false,
   setIsModalNewProductsOpen: () => {},
   submitAddNewProduct: async (formData: TAddNewProductForm) => {},
+  isModalEditProduct: false,
+  setisModalEditProduct: () => {},
+  submitEditProduct: async (formData: TeditProductFormSchema, productId: string) => {},
 })
 
 export const ProductsProvider = ({ children }:IProductProviderProps) => {
   const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
+
+  const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
   const [productList, setProductList] = useState<IProduct[] | null>(null)
 
@@ -29,7 +35,6 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
       } finally {
         // setLoading(false)
       }
-          
     }
     loadProducts()
 
@@ -53,13 +58,11 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
       } catch (error){
         console.log(error)
       }
-
     }
-
   } 
 
   const submitAddNewProduct = async (formData: TAddNewProductForm) : Promise<void> => {
-    const token = localStorage.getItem('@TOKEN')
+    const token = localStorage.getItem("@TOKEN")
 
     try {
       const { data } = await api.post("/products", formData, {
@@ -77,8 +80,35 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
     }
   }
 
+  const submitEditProduct = async (formData: TeditProductFormSchema, productId: string) => {
+    console.log(formData)
+    const token = localStorage.getItem("@TOKEN")
+    
+    try {
+      const { data } = await api.put(`/products/${productId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      if(productList){
+        const productIndex = productList.findIndex(product => product.id.toString() === productId)
+        if (productIndex !== -1) {
+          const updatedProductList = [...productList]
+          updatedProductList[productIndex] = data 
+          setProductList(updatedProductList)
+        }
+      }
+    
+    } catch (error) {
+      console.log(error)
+    }
+
+    setisModalEditProduct(false)
+  }
+
   return (
-    <ProductContext.Provider value={{ productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct}}>
+    <ProductContext.Provider value={{ productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
       { children }
     </ProductContext.Provider>
   )

@@ -1,4 +1,5 @@
 import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema";
+import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema";
 
 export interface IProductProviderProps {
   children: React.ReactNode;
@@ -22,4 +23,7 @@ export interface IProductContextValue {
   isModalNewProductOpen: boolean;
   setIsModalNewProductsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   submitAddNewProduct: (formData: TAddNewProductForm) => Promise<void>;
+  isModalEditProduct: boolean,
+  setisModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>,
+  submitEditProduct: (formData: TeditProductFormSchema, productId: string) => Promise<void>;
 }
