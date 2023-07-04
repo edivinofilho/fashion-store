@@ -20,4 +20,6 @@ export const FooterStyled = styled.footer`
         text-align: center;
         ${letterParagraph}
     }
+
+
 `

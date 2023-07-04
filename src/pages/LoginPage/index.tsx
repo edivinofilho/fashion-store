@@ -1,16 +1,16 @@
-import { api } from "../../services/api";
+// import { api } from "../../services/api";
 
-import { useForm } from "react-hook-form";
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+// import { useForm } from "react-hook-form";
+// import { useEffect } from "react"
+// import { useNavigate } from "react-router-dom";
 
-import { Input } from "../../components/Input"
-import { Header } from "../../components/adminComponents/TopSectionAdmin"
-import { FooterDefault } from "../../components/Footer"
+// import { Input } from "../../components/Input/index.tsx"
+// import { Header } from "../../components/adminComponents/Header"
+// import { FooterDefault } from "../../components/Footer"
 
-import img from "../../assets/imgCover.svg"
+// import img from "../../assets/imgCover.svg"
 
-import { StyledFormLogin, SectionLogin } from "./style"
+// import { StyledFormLogin, SectionLogin } from "./style"
 
 // import { InputStyled } from "../../styles/Input"
 // import { ButtonStyled } from "../../styles/Button";
@@ -21,49 +21,49 @@ import { StyledFormLogin, SectionLogin } from "./style"
 
 
 export const LoginPage = () => {
-  const { register, handleSubmit } = useForm()
-  const navigation = useNavigate()
+//   const { register, handleSubmit } = useForm()
+//   const navigation = useNavigate()
 
-  const login = async (formData) => {
-    try {
-      const { data } = await api.post("login", formData)
+//   const login = async (formData) => {
+//     try {
+//       const { data } = await api.post("login", formData)
 
-      localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
-      localStorage.setItem("@User", JSON.stringify(data.user))
-      navigation("/admin_dashboard")
-    } catch (error) {
+//       localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
+//       localStorage.setItem("@User", JSON.stringify(data.user))
+//       navigation("/admin_dashboard")
+//     } catch (error) {
 
-      if (error.response.data == "Cannot find user") {
+//       if (error.response.data == "Cannot find user") {
 
-        toast.error('Usuário não encontrado!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
-      } else if (error.response.data == "Incorrect password") {
+//         toast.error('Usuário não encontrado!', {
+//           position: "top-right",
+//           autoClose: 5000,
+//           hideProgressBar: false,
+//           closeOnClick: true,
+//           pauseOnHover: true,
+//           draggable: true,
+//           progress: undefined,
+//           theme: "colored",
+//         })
+//       } else if (error.response.data == "Incorrect password") {
 
-        toast.error('Senha incorreta!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
-      }
-    }
-  }
+//         toast.error('Senha incorreta!', {
+//           position: "top-right",
+//           autoClose: 5000,
+//           hideProgressBar: false,
+//           closeOnClick: true,
+//           pauseOnHover: true,
+//           draggable: true,
+//           progress: undefined,
+//           theme: "colored",
+//         })
+//       }
+//     }
+//   }
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer />
 
       <SectionLogin>
         <img src={img} alt="" />
@@ -77,7 +77,9 @@ export const LoginPage = () => {
           </div>
         </StyledFormLogin>
       </SectionLogin>
-      <FooterDefault />
+      <FooterDefault /> */}
+
+      
     </>
   )
 }
