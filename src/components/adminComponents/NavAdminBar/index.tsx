@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
+import { StyledNavAdminBar } from "./styles"
 
 export const NavAdminBar = () => {
   return (
-    <nav>
+    <StyledNavAdminBar>
         <ul>
           <li>
             <Link to="/admin_welcome">
@@ -15,6 +16,6 @@ export const NavAdminBar = () => {
             </Link>
           </li>
         </ul>
-      </nav>
+      </StyledNavAdminBar>
   )
 }

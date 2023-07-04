@@ -5,18 +5,18 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
 import { Input } from "../../components/Input"
-import { Header } from "../../components/adminComponents/Header"
+import { Header } from "../../components/adminComponents/TopSectionAdmin"
 import { FooterDefault } from "../../components/Footer"
 
 import img from "../../assets/imgCover.svg"
 
 import { StyledFormLogin, SectionLogin } from "./style"
 
-import { InputStyled } from "../../styles/Input"
-import { ButtonStyled } from "../../styles/Button";
+// import { InputStyled } from "../../styles/Input"
+// import { ButtonStyled } from "../../styles/Button";
 
-import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+// import { toast, ToastContainer } from "react-toastify";
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 

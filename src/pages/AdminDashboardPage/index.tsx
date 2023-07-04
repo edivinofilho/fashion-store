@@ -1,5 +1,5 @@
 import { Modal } from "../../components/Modal/index"
-import { Header } from "../../components/adminComponents/Header"
+import { TopSectionAdmin } from "../../components/adminComponents/TopSectionAdmin"
 import { NavAdminBar } from "../../components/adminComponents/NavAdminBar"
 import { ProductList } from "../../components/ProductList"
 import { useContext, useState } from "react"
@@ -7,6 +7,10 @@ import { ProductContext } from "../../providers/ProductsContext/ProductsContex"
 import { IProduct } from "../../providers/ProductsContext/@types"
 import { AddNewProductForm } from "../../components/adminComponents/AddNewProductForm"
 import { EditProductForm } from "../../components/adminComponents/EditProductForm"
+import { HeaderDefault } from "../../components/Header"
+import { FooterStyled } from "../../components/Footer/styles"
+import { ButtonStyled } from "../../styles/Button"
+import { StyledTopSectionContainer } from "./styles"
 
 
 export const AdminDashboardPage = () => {
@@ -20,11 +24,14 @@ export const AdminDashboardPage = () => {
   
   return (
     <>
-      <h1>LOGO</h1>
+      <HeaderDefault onlyBrand={true}/>
       <NavAdminBar />
-      <Header title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
-      <button onClick={() => setIsModalNewProductsOpen(true)}> + NOVO PRODUTO</button>
-
+      <StyledTopSectionContainer>
+        <TopSectionAdmin title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
+        <ButtonStyled styleTypeButton="black" 
+        onClick={() => setIsModalNewProductsOpen(true)}> + NOVO PRODUTO</ButtonStyled>
+      </StyledTopSectionContainer>
+    
       <main>
         <ProductList>
           {productList ? productList.map((product) => (
@@ -56,6 +63,9 @@ export const AdminDashboardPage = () => {
           : null
         }
       </main>
+      <FooterStyled>
+        <p>Todos os direitos reservados - Kenzie Academy Brasil</p>
+      </FooterStyled>
     </>
   )
 }
