@@ -21,6 +21,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
     const loadProducts = async () => {
       try {
         const { data } = await api.get('/products')
+        
         setProductList(data) 
     
       } catch(error){
