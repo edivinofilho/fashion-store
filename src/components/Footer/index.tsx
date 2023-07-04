@@ -1,4 +1,4 @@
-import { FooterStyled } from "./style.ts"
+import { FooterStyled } from "./styles.ts"
 
 export function FooterDefault() {
 
