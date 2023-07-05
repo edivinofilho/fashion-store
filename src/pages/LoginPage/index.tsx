@@ -25,6 +25,7 @@ export const LoginPage = () => {
     <>
       <HeaderDefault onlyBrand={true} />
       <main>
+        
         <img src={img} alt="" />
         <StyledFormLogin onSubmit={handleSubmit(login)}>
           <LoginPageTitle>ENTRAR</LoginPageTitle>

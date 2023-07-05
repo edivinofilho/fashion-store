@@ -3,8 +3,8 @@ import { letterParagraph, letterPriceSmall, letterTitle4 } from "../../styles/gl
 
 
 export const LiStyled = styled.li`
-    height: clamp(250px,68vw,332px);
-    width: clamp(514px,130vw,592px);
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;

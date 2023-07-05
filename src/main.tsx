@@ -12,14 +12,14 @@ import 'react-toastify/dist/ReactToastify.css'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
+      <ToastContainer />
       <UserProvider>
-        <ToastContainer/>
         <ProductsProvider>
           <StyleSheetManager shouldForwardProp={(prop) => prop !== 'onlyBrand' && prop !== 'styleTypeButton' && prop !== 'styledDiv'}>
             <App />
-          </StyleSheetManager>,
+          </StyleSheetManager>
         </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

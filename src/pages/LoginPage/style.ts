@@ -19,3 +19,4 @@ export const StyledFormLogin = styled.form`
 export const LoginPageTitle = styled.h1`
     ${letterTitle2}
 `
+

@@ -18,7 +18,7 @@ export interface IRemoveProduct {
 }
 
 export interface IProductContextValue {
-  productList: IProduct[] | null;
+  productList: IProduct[] | null;  
   removeProduct: (itemId: number) => void;
   isModalNewProductOpen: boolean;
   setIsModalNewProductsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,4 +26,6 @@ export interface IProductContextValue {
   isModalEditProduct: boolean,
   setisModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>,
   submitEditProduct: (formData: TeditProductFormSchema, productId: string) => Promise<void>;
+  currentProduct: IProduct | null,
+  setCurrentProduct: React.Dispatch<React.SetStateAction<IProduct | null>>
 }
