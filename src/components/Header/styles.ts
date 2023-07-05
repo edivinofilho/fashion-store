@@ -9,16 +9,16 @@ export const HeaderStyled = styled.header<IStyledProps>`
     min-height: 48px;
     height: auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 0px 10px;
+    margin-top: 15px;
 
     div{
-        margin-top: 30px;
         gap: 15px;
         width: 100%;
         max-width: 1440px;
+        min-height: 48px;
         height: auto;
         display: flex;
         flex-direction: row;
