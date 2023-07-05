@@ -3,7 +3,7 @@ import logo from "../../assets/FAshionSTORE.svg"
 import cart from "../../assets/cart.svg"
 
 interface IProps {
-    onlyBrand: Boolean
+    onlyBrand: boolean
 }
 
 export const HeaderDefault = ({ onlyBrand }: IProps) => {

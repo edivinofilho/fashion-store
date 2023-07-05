@@ -12,11 +12,11 @@
 
 // import { StyledFormLogin, SectionLogin } from "./style"
 
-// import { ButtonStyled } from "../../styles/Button/styled.ts";
+// import { InputStyled } from "../../styles/Input"
+// import { ButtonStyled } from "../../styles/Button";
 
 // import { toast, ToastContainer } from "react-toastify";
 // import 'react-toastify/dist/ReactToastify.css';
-// import { styled } from 'styled-components';
 
 
 
