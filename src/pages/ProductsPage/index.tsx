@@ -8,16 +8,26 @@ import { ProductList } from "../../components/ProductList/index.tsx";
 import cart from "../../assets/cart.svg"
 
 export const ProductsPage = () => {
-  const productList: IProduct[] | null = useContext(ProductContext).productList
-  console.log(productList)
+  const { productList, currentProduct } = useContext(ProductContext)
+
+  const filterProductList = productList?.filter(product => product.id !== currentProduct?.id)
 
   return (
     <ConteinerTopStyled>
       <HeaderDefault onlyBrand={false} />
-
-      <ProductList>
+      <div>
+        <span>PRODUTO PRINCIPAL</span>
+        <img src={currentProduct?.image} />
+        <p>{currentProduct?.name}</p>
+        <p>R$ {currentProduct?.price}</p>
+        <div>
+          <img src={cart} alt="Carrinho" />
+          <span>Saiba Mais</span>
+        </div>
+      </div>
+      <ProductList page="otherPage" >
         {
-          productList?.map(product =>
+          filterProductList?.map(product =>
             <li key={product.id}>
               <img src={product.image} />
               <p>{product.name}</p>

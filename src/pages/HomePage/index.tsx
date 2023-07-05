@@ -9,7 +9,7 @@ import imgCover from "../../assets/imgCover.svg"
 
 export const HomePage = () => {
 
-  const productList: IProduct[] | null = useContext(ProductContext).productList
+  const { productList } = useContext(ProductContext)
 
   return (
     <>

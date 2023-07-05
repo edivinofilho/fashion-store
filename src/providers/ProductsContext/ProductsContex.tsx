@@ -5,23 +5,16 @@ import { TAddNewProductForm } from "../../components/adminComponents/AddNewProdu
 import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
 
 
-export const ProductContext = createContext<IProductContextValue>({
-  productList: null,
-  removeProduct: (itemId: number) => {},
-  isModalNewProductOpen: false,
-  setIsModalNewProductsOpen: () => {},
-  submitAddNewProduct: async (formData: TAddNewProductForm) => {},
-  isModalEditProduct: false,
-  setisModalEditProduct: () => {},
-  submitEditProduct: async (formData: TeditProductFormSchema, productId: string) => {},
-})
-
+export const ProductContext = createContext({} as IProductContextValue)
+ 
 export const ProductsProvider = ({ children }:IProductProviderProps) => {
   const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
 
   const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
   const [productList, setProductList] = useState<IProduct[] | null>(null)
+
+  const [ currentProduct, setCurrentProduct ] = useState<IProduct | null>(null)
 
   useEffect(() => {       
     const loadProducts = async () => {
@@ -109,7 +102,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }
 
   return (
-    <ProductContext.Provider value={{ productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
+    <ProductContext.Provider value={{  productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
       { children }
     </ProductContext.Provider>
   )
