@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { StyledProductList } from "../../components/ProductList/styles.ts"
+import { StyledProductList } from "../../styles/UlStyled.ts"
 import { IProduct } from "../../providers/ProductsContext/@types.ts"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx"
 import { ProductItem } from "../../components/ProductItem/index.tsx"
@@ -10,6 +10,8 @@ import imgCover from "../../assets/imgCover.svg"
 export const HomePage = () => {
 
   const productList: IProduct[] | null = useContext(ProductContext).productList
+
+
 
   return (
     <>

@@ -1,21 +1,21 @@
-import { FooterDefault } from "../../components/Footer/index.tsx"
+/* import { FooterDefault } from "../../components/Footer/index.tsx"
 import { HeaderDefault } from "../../components/Header/index.tsx"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx";
 import { ConteinerTopStyled } from "./style.ts"
 import { useContext } from 'react';
 import { IProduct } from "../../providers/ProductsContext/@types.ts";
-import { ProductList } from "../../components/ProductList/index.tsx";
 import cart from "../../assets/cart.svg"
+import { StyledProductList } from "../../styles/UlStyled.ts"; */
 
 export const ProductsPage = () => {
-  const productList: IProduct[] | null = useContext(ProductContext).productList
-  console.log(productList)
+/*   const productList: IProduct[] | null = useContext(ProductContext).productList
+  console.log(productList) */
 
   return (
-    <ConteinerTopStyled>
+    <></>
+ /*    <ConteinerTopStyled>
       <HeaderDefault onlyBrand={false} />
-
-      <ProductList>
+      <StyledProductList>
         {
           productList?.map(product =>
             <li key={product.id}>
@@ -28,11 +28,8 @@ export const ProductsPage = () => {
               </div>
             </li>)
         }
-
-      </ProductList>
-
-
+      </StyledProductList>
       <FooterDefault />
-    </ConteinerTopStyled>
+    </ConteinerTopStyled> */
   )
 }
