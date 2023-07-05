@@ -11,6 +11,7 @@ import { HeaderDefault } from "../../components/Header"
 import { FooterStyled } from "../../components/Footer/styles"
 import { ButtonStyled } from "../../styles/Button"
 import { StyledTopSectionContainer } from "./styles"
+import { StyledProductList } from "../../components/ProductList/styles"
 
 
 export const AdminDashboardPage = () => {
@@ -33,21 +34,30 @@ export const AdminDashboardPage = () => {
       </StyledTopSectionContainer>
     
       <main>
-        <ProductList>
+        <StyledProductList styledDiv="adminPage">
           {productList ? productList.map((product) => (
           <li key={product.id}>
-            <img src={product.image}/>
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-            <button onClick={() => {
-              setSelectedProduct(product)
-              setisModalEditProduct(true)
-            
-              }}>Editar</button>
-            <button onClick={() => removeProduct(product.id)}>Remover</button>
+            <div>
+              <img src={product.image}/>
+              <span>
+                <p>{product.name}</p>
+                <p>{product.price.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</p>
+              </span>
+            </div>
+            <div>
+              <button onClick={() => {
+                setSelectedProduct(product)
+                setisModalEditProduct(true)
+              
+                }}>{<img src="../../src/assets/editButton.svg"  alt="Botão para editar produto" className="buttonIcon"/>}</button>
+
+              <button onClick={() =>
+                removeProduct(product.id)
+                }>{<img src="../../src/assets/deleteButton.svg"  alt="Botão para remover produto" className="buttonIcon"/>}</button>
+            </div>
           </li>
         )) : null}
-        </ProductList>
+        </StyledProductList>
 
         { isModalNewProductOpen ? 
           <Modal title="NOVO PRODUTO" setModalState={() => setIsModalNewProductsOpen(false)}>
