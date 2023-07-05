@@ -3,6 +3,7 @@ import { letterParagraph } from "../../styles/globalStyle.ts";
 
 
 export const FooterStyled = styled.footer`
+    align-self: flex-end;
     width: 100%;
     min-height: 120px;
     height: auto;
@@ -18,6 +19,4 @@ export const FooterStyled = styled.footer`
         text-align: center;
         ${letterParagraph}
     }
-
-
 `

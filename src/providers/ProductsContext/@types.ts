@@ -18,7 +18,7 @@ export interface IRemoveProduct {
 }
 
 export interface IProductContextValue {
-  productList: IProduct[] | null;
+  productList: IProduct[] | null;  
   removeProduct: (itemId: number) => void;
   isModalNewProductOpen: boolean;
   setIsModalNewProductsOpen: React.Dispatch<React.SetStateAction<boolean>>;

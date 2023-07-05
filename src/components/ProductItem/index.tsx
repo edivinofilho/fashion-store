@@ -18,7 +18,7 @@ export const ProductItem = ({ item }: IProductList) => {
       <img className="image" src={item.image} />
       <div className="container">
         <p className="name">{item.name}</p>
-        <p className="price">{item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+        <p className="price">{item.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
         <div className="containerButton">
           <button><img src={cartPlus} alt="Carrinho com o sinal de + dentro" /></button>
           <Link to="/product" onClick={()=> setCurrentProduct(item)} >SAIBA MAIS</Link>

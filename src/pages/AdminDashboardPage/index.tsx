@@ -1,7 +1,6 @@
 import { Modal } from "../../components/Modal/index"
 import { TopSectionAdmin } from "../../components/adminComponents/TopSectionAdmin"
 import { NavAdminBar } from "../../components/adminComponents/NavAdminBar"
-import { ProductList } from "../../components/ProductList"
 import { useContext, useState } from "react"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex"
 import { IProduct } from "../../providers/ProductsContext/@types"
@@ -11,7 +10,7 @@ import { HeaderDefault } from "../../components/Header"
 import { FooterStyled } from "../../components/Footer/styles"
 import { ButtonStyled } from "../../styles/Button"
 import { StyledTopSectionContainer } from "./styles"
-import { StyledProductList } from "../../components/ProductList/styles"
+import { StyledProductList } from "../../styles/UlStyled"
 
 
 export const AdminDashboardPage = () => {

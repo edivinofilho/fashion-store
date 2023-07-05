@@ -4,6 +4,8 @@ import { TAddNewProductForm, addNewProductFormSchema } from "./addNewProductForm
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { ProductContext } from "../../../providers/ProductsContext/ProductsContex"
+import { StyledAddNewProductForm } from "./styles"
+import { ButtonStyled } from "../../../styles/Button"
 
 
 export const AddNewProductForm = () => {
@@ -18,12 +20,12 @@ export const AddNewProductForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <StyledAddNewProductForm onSubmit={handleSubmit(submit)}>
       <Input placeholder="NOME" error={errors.name} {...register("name")}/>
       <Input placeholder="PREÇO (R$)" error={errors.price} {...register("price")}/>
       <Input placeholder="IMAGEM (URL)" error={errors.image} {...register("image")}/>
       <Input placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>
-      <button type="submit">+ NOVO PRODUTO</button>
-    </form>
+      <ButtonStyled styleTypeButton="black" type="submit">+ NOVO PRODUTO</ButtonStyled>
+    </StyledAddNewProductForm>
   )
 }

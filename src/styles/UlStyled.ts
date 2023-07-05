@@ -1,36 +1,34 @@
 import { styled, css } from "styled-components"
-import { letterParagraph, letterPriceSmallBold } from "../../styles/globalStyle"
+import { letterParagraph, letterPriceSmallBold } from "./globalStyle"
 
 interface IStyledProductList {
-    styledDiv: "otherPage" | "adminPage";
+  styledDiv: "otherPage" | "adminPage";
 }
 
-export const StyledProductList = styled.div<IStyledProductList>`
+export const StyledProductList = styled.ul<IStyledProductList>`
 
     width: 100%;
     height: 3.75rem;
 
     ${({ styledDiv }) => {
-        switch (styledDiv) {
-            case "otherPage":
-                return css`
+    switch (styledDiv) {
+      case "otherPage":
+        return css`
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
-                    align-items: center;
-                    min-height: 600px;
-                    height: auto;
+                    align-items: start;
+                    height:auto;
                     width: 100%;
                     max-width: 1440px;
                     overflow-x: auto;   
                     gap: 15px;
                     padding: 10px 0px;
                 `;
-            case "adminPage":
-                return css`
+      case "adminPage":
+        return css`
               width: 100%;
               height: auto;
-    
               display: flex;
               align-items: center;
               justify-content: space-around;
@@ -96,6 +94,6 @@ export const StyledProductList = styled.div<IStyledProductList>`
                 }
               }
             `;
-        }
-    }}
+    }
+  }}
     `
