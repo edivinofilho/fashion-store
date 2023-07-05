@@ -2,7 +2,7 @@ import { styled, css } from "styled-components"
 import { letterParagraph, letterPriceSmallBold } from "../../styles/globalStyle"
 
 interface IStyledProductList {
-  styledDiv: "homePage" | "adminPage";
+    styledDiv: "otherPage" | "adminPage";
 }
 
 export const StyledProductList = styled.div<IStyledProductList>`
@@ -12,12 +12,22 @@ export const StyledProductList = styled.div<IStyledProductList>`
 
     ${({ styledDiv }) => {
         switch (styledDiv) {
-            case "homePage":
+            case "otherPage":
                 return css`
-                  /* Estilização Home e ProductPage */
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    min-height: 600px;
+                    height: auto;
+                    width: 100%;
+                    max-width: 1440px;
+                    overflow-x: auto;   
+                    gap: 15px;
+                    padding: 10px 0px;
                 `;
             case "adminPage":
-              return css`
+                return css`
               width: 100%;
               height: auto;
     
@@ -88,4 +98,4 @@ export const StyledProductList = styled.div<IStyledProductList>`
             `;
         }
     }}
-`
+    `

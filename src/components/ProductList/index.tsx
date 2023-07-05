@@ -1,11 +1,14 @@
+import { StyledProductList } from "./styles.ts";
+
 interface IProductList {
   children: React.ReactNode;
+  page: "otherPage" | "adminPage";
 }
 
-export const ProductList = ({children} : IProductList) => {
+export const ProductList = ({ children, page }: IProductList) => {
   return (
-    <ul>
+    <StyledProductList styleDiv={page}>
       {children}
-    </ul>
+    </StyledProductList>
   )
 }

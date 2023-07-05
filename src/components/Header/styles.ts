@@ -7,23 +7,26 @@ interface IStyledProps {
 export const HeaderStyled = styled.header<IStyledProps>`
     width: 100%;
     min-height: 48px;
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 25px 10px;
+    padding: 0px 10px;
 
     div{
+        margin-top: 30px;
         gap: 15px;
         width: 100%;
         max-width: 1440px;
+        height: auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
 
         ${({ onlyBrand }) => {
-        if (onlyBrand === true) {
+        if (onlyBrand) {
             return css`
                     justify-content: center;
                 `
