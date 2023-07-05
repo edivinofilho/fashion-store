@@ -1,4 +1,5 @@
 import { styled } from "styled-components"
+import { letterTitle2 } from "../../styles/globalStyle.ts"
 
 
 export const StyledFormLogin = styled.form`
@@ -15,11 +16,6 @@ export const StyledFormLogin = styled.form`
     }
 `
 
-export const SectionLogin = styled.section`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 90vw;
-    margin: 0 auto;
-    padding: 5rem 0;
+export const LoginPageTitle = styled.h1`
+    ${letterTitle2}
 `

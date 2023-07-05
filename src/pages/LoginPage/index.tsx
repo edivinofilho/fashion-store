@@ -1,85 +1,46 @@
-// import { api } from "../../services/api";
-
-// import { useForm } from "react-hook-form";
-// import { useEffect } from "react"
-// import { useNavigate } from "react-router-dom";
-
-// import { Input } from "../../components/Input/index.tsx"
-// import { Header } from "../../components/adminComponents/Header"
-// import { FooterDefault } from "../../components/Footer"
-
-// import img from "../../assets/imgCover.svg"
-
-// import { StyledFormLogin, SectionLogin } from "./style"
-
-// import { InputStyled } from "../../styles/Input"
-// import { ButtonStyled } from "../../styles/Button";
-
-// import { toast, ToastContainer } from "react-toastify";
-// import 'react-toastify/dist/ReactToastify.css';
-
+import { useForm } from "react-hook-form"
+import { useContext } from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Input } from "../../components/Input"
+import { HeaderDefault } from "../../components/Header/index.tsx"
+import { FooterDefault } from "../../components/Footer"
+import { ButtonStyled } from "../../styles/Button.ts"
+import img from "../../assets/imgCover.svg"
+import { StyledFormLogin, LoginPageTitle } from "./style"
+import { TLoginFormValues, loginFormSchema } from "./LoginSchema"
+import { UserContext } from "../../providers/UserContext/UserContext.tsx"
 
 
 export const LoginPage = () => {
-//   const { register, handleSubmit } = useForm()
-//   const navigation = useNavigate()
+  const { register, handleSubmit, formState: { errors } } = useForm<TLoginFormValues>({ resolver: zodResolver(loginFormSchema) })
+  const { login, navigation } = useContext(UserContext)
 
-//   const login = async (formData) => {
-//     try {
-//       const { data } = await api.post("login", formData)
 
-//       localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
-//       localStorage.setItem("@User", JSON.stringify(data.user))
-//       navigation("/admin_dashboard")
-//     } catch (error) {
+  const registerPage = () => {
 
-//       if (error.response.data == "Cannot find user") {
-
-//         toast.error('Usuário não encontrado!', {
-//           position: "top-right",
-//           autoClose: 5000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//           theme: "colored",
-//         })
-//       } else if (error.response.data == "Incorrect password") {
-
-//         toast.error('Senha incorreta!', {
-//           position: "top-right",
-//           autoClose: 5000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//           theme: "colored",
-//         })
-//       }
-//     }
-//   }
+    navigation("/register")
+  }
 
   return (
     <>
-      {/* <ToastContainer />
-
-      <SectionLogin>
+      <HeaderDefault onlyBrand={true} />
+      <main>
         <img src={img} alt="" />
         <StyledFormLogin onSubmit={handleSubmit(login)}>
-          <h1>ENTRAR</h1>
-          <InputStyled {...register("email")} placeholder="E-MAIl" type="email" />
-          <InputStyled {...register("password")} placeholder="SENHA" type="password" />
+          <LoginPageTitle>ENTRAR</LoginPageTitle>
+          <Input error={errors.email} {...register("email")} placeholder="E-MAIl" type="email" />
+          <Input error={errors.password} {...register("password")} placeholder="SENHA" type="password" />
           <div className="container">
-            <ButtonStyled styleTypeButton="black" type="submit">ACESSAR</ButtonStyled>
-            <ButtonStyled styleTypeButton="white">CADASTRE-SE</ButtonStyled>
+            <ButtonStyled styleTypeButton="black">ACESSAR</ButtonStyled>
+            <ButtonStyled styleTypeButton="white" onClick={() => registerPage()} type="button">CADASTRE-SE</ButtonStyled>
           </div>
         </StyledFormLogin>
-      </SectionLogin>
-      <FooterDefault /> */}
-
-      
+      </main>
+      <FooterDefault />
     </>
   )
+}
+
+function register(arg0: string): import("react/jsx-runtime").JSX.IntrinsicAttributes & IInputProps & import("react").RefAttributes<HTMLInputElement> {
+  throw new Error("Function not implemented.");
 }
