@@ -6,17 +6,16 @@ import { ProductItem } from "../../components/ProductItem/index.tsx"
 import { HeaderDefault } from "../../components/Header/index.tsx"
 import { FooterDefault } from "../../components/Footer/index.tsx"
 import imgCover from "../../assets/imgCover.svg"
+import { MainStyled } from "./styles.ts"
 
 export const HomePage = () => {
 
   const productList: IProduct[] | null = useContext(ProductContext).productList
 
-
-
   return (
     <>
       <HeaderDefault onlyBrand={false} />
-      <main>
+      <MainStyled>
         <div>
           <img src={imgCover} alt='' />
           <h1>Kenzie Fashion Store</h1>
@@ -25,7 +24,7 @@ export const HomePage = () => {
         <StyledProductList styledDiv="otherPage" >
           {productList ? productList.map((product) => (<ProductItem key={product.id} item={product} />)) : null}
         </StyledProductList>
-      </main>
+      </MainStyled>
       <FooterDefault />
     </>
   )
