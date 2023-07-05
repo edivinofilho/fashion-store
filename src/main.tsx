@@ -12,8 +12,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ProductsProvider>
         <StyleSheetManager shouldForwardProp={(prop) => prop !== 'onlyBrand' && prop !== 'styleTypeButton' && prop !== 'styledDiv'}>
           <App />
-        </StyleSheetManager>,
+        </StyleSheetManager>
       </ProductsProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

@@ -24,4 +24,11 @@ body{
     background-color: ${({theme}) => theme.colors.white};
 }
 
+main{
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    padding: 0px 15px;
+}
+
 `
