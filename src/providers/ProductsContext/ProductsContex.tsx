@@ -5,29 +5,18 @@ import { TAddNewProductForm } from "../../components/adminComponents/AddNewProdu
 import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
 
 
-export const ProductContext = createContext<IProductContextValue>({
-  productList: null,
-  selectProductPage: null,
-  removeProduct: (itemId: number) => { },
-  isModalNewProductOpen: false,
-  setIsModalNewProductsOpen: () => { },
-  submitAddNewProduct: async (formData: TAddNewProductForm) => { },
-  isModalEditProduct: false,
-  setisModalEditProduct: () => { },
-  setselectProductPage: () => { },
-  submitEditProduct: async (formData: TeditProductFormSchema, productId: string) => { },
-})
-
-export const ProductsProvider = ({ children }: IProductProviderProps) => {
-  const [isModalNewProductOpen, setIsModalNewProductsOpen] = useState(false)
+export const ProductContext = createContext({} as IProductContextValue)
+ 
+export const ProductsProvider = ({ children }:IProductProviderProps) => {
+  const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
 
   const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
   const [productList, setProductList] = useState<IProduct[] | null>(null)
 
-  const [selectProductPage, setselectProductPage] = useState<IProduct | null>(null)
+  const [ currentProduct, setCurrentProduct ] = useState<IProduct | null>(null)
 
-  useEffect(() => {
+  useEffect(() => {       
     const loadProducts = async () => {
       try {
         const { data } = await api.get('/products')
@@ -113,8 +102,8 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
   }
 
   return (
-    <ProductContext.Provider value={{ selectProductPage, setselectProductPage, productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct }}>
-      {children}
+    <ProductContext.Provider value={{  productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
+      { children }
     </ProductContext.Provider>
   )
 }

@@ -10,7 +10,7 @@ import { MainStyled } from "./styles.ts"
 
 export const HomePage = () => {
 
-  const productList: IProduct[] | null = useContext(ProductContext).productList
+  const { productList } = useContext(ProductContext)
 
   return (
     <>
