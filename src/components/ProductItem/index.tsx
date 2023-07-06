@@ -21,7 +21,7 @@ export const ProductItem = ({ item }: IProductList) => {
         <p className="price">{item.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
         <div className="containerButton">
           <button><img src={cartPlus} alt="Carrinho com o sinal de + dentro" /></button>
-          <Link to="/product" onClick={()=> setCurrentProduct(item)} >SAIBA MAIS</Link>
+          <Link to="/product"  onClick={()=> setCurrentProduct(item) }>SAIBA MAIS</Link>
         </div>
       </div>
     </LiStyled>
