@@ -16,9 +16,9 @@ export const HomePage = () => {
     <>
       <HeaderDefault onlyBrand={false} />
       <MainStyled>
-        <div>
+        <div className="containerHome">
           <img className="imgCover" src={imgCover} alt='' />
-          <h1 className="title">Kenzie Fashion Store</h1>
+          <h1 className="title">KENZIE<br />FASHION<br />STORE</h1>
         </div>
         <h2>PRODUTOS EM DESTAQUE</h2>
         <StyledProductList styledDiv="otherPage" >
