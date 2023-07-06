@@ -15,10 +15,6 @@ interface IFormData {
     password: string;
 }
 
-interface ILoginContextValue {
-    login: (formData: IFormData) => Promise<void>
-}
-
 interface IUser {
     accessToken: string;
     user: {
@@ -50,6 +46,16 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
             localStorage.setItem("@User", JSON.stringify(data.user))
             navigation("/admin_welcome")
             setUser(data)
+            toast.success("Usuário logado", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
         } catch (error: any) {
 
             if (error.response.data == "Incorrect password") {
