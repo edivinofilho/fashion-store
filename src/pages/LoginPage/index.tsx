@@ -6,7 +6,7 @@ import { HeaderDefault } from "../../components/Header/index.tsx"
 import { FooterDefault } from "../../components/Footer"
 import { ButtonStyled } from "../../styles/Button.ts"
 import img from "../../assets/imgCover.svg"
-import { StyledFormLogin, LoginPageTitle } from "./style"
+import { StyledFormLogin, LoginPageTitle, StyleSection } from "./style"
 import { TLoginFormValues, loginFormSchema } from "./LoginSchema"
 import { UserContext } from "../../providers/UserContext/UserContext.tsx"
 
@@ -25,17 +25,18 @@ export const LoginPage = () => {
     <>
       <HeaderDefault onlyBrand={true} />
       <main>
-        
-        <img src={img} alt="" />
-        <StyledFormLogin onSubmit={handleSubmit(login)}>
-          <LoginPageTitle>ENTRAR</LoginPageTitle>
-          <Input error={errors.email} {...register("email")} placeholder="E-MAIl" type="email" />
-          <Input error={errors.password} {...register("password")} placeholder="SENHA" type="password" />
-          <div className="container">
-            <ButtonStyled styleTypeButton="black">ACESSAR</ButtonStyled>
-            <ButtonStyled styleTypeButton="white" onClick={() => registerPage()} type="button">CADASTRE-SE</ButtonStyled>
-          </div>
-        </StyledFormLogin>
+        <StyleSection>
+          <img src={img} alt="" />
+          <StyledFormLogin onSubmit={handleSubmit(login)}>
+            <LoginPageTitle>ENTRAR</LoginPageTitle>
+            <Input error={errors.email} {...register("email")} placeholder="E-MAIl" type="email" />
+            <Input error={errors.password} {...register("password")} placeholder="SENHA" type="password" />
+            <div className="container">
+              <ButtonStyled styleTypeButton="black">ACESSAR</ButtonStyled>
+              <ButtonStyled styleTypeButton="white" onClick={() => registerPage()} type="button">CADASTRE-SE</ButtonStyled>
+            </div>
+          </StyledFormLogin>
+        </StyleSection>
       </main>
       <FooterDefault />
     </>

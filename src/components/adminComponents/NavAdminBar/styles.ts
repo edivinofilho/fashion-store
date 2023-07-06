@@ -4,7 +4,8 @@ import { letterMenu } from "../../../styles/globalStyle"
 export const StyledNavAdminBar = styled.nav`
   width: 100%;
   min-height: 3rem;
-
+  max-width: 1440px;
+  margin-left: 1.8rem;
   margin-bottom: 1.25rem;
 
   > ul {

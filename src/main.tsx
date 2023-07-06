@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ToastContainer />
       <UserProvider>
         <ProductsProvider>
-          <StyleSheetManager shouldForwardProp={(prop) => prop !== 'onlyBrand' && prop !== 'styleTypeButton' && prop !== 'styledDiv'}>
+          <StyleSheetManager shouldForwardProp={(prop) => prop !== 'onlyBrand' && prop !== 'styleTypeButton' && prop !== 'styledDiv' && prop !== 'styleModal'}>
             <App />
           </StyleSheetManager>
         </ProductsProvider>

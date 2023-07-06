@@ -28,8 +28,7 @@ export const AdminDashboardPage = () => {
       <NavAdminBar />
       <StyledTopSectionContainer>
         <TopSectionAdmin title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
-        <ButtonStyled styleTypeButton="black" 
-        onClick={() => setIsModalNewProductsOpen(true)}> + NOVO PRODUTO</ButtonStyled>
+          <ButtonStyled styleTypeButton="black" onClick={() => setIsModalNewProductsOpen(true)}>{<img src="../../src/assets/plusSign.svg" />} NOVO PRODUTO</ButtonStyled>
       </StyledTopSectionContainer>
     
       <main>

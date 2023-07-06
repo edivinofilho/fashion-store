@@ -20,3 +20,8 @@ export const LoginPageTitle = styled.h1`
     ${letterTitle2}
 `
 
+export const StyleSection = styled.section`
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+`
