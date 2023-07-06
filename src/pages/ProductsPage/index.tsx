@@ -44,7 +44,7 @@ export const ProductsPage = () => {
           <h4>{currentProduct?.name}</h4>
           <span>{currentProduct?.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</span>
           <p>{currentProduct?.description}</p>
-          <button> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</button>
+          <button onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</button>
         </div>
       </ProductMainStyled>
       <h2>Veja Também</h2>
