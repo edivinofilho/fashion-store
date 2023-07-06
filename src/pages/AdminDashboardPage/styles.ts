@@ -6,16 +6,30 @@ export const StyledTopSectionContainer =styled.div`
 
   display: flex;
   align-items: center;
+  max-width: 1440px;
+
+  padding: 0 35px;
+  margin-bottom: 30px;
+
+  /* background-color: red; */
   
   button {
-    width: 17rem;
+    width: 18rem;
     height: 3.75rem;
 
-    margin-top: 10px;
+    padding: 5px;
+    margin: 10px 0 0 10px;
   }
 
   @media(max-width: 400px) {
+  
+    padding: 0 5px;
+    text-align: center;
     flex-wrap: wrap;
-    justify-content: center;
+
+    button {
+      margin: 0 auto;
+      align-self: center;
+    }
   }
 `
