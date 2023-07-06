@@ -12,9 +12,13 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
   const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
+  const [isModal, setisModal] = useState(false)
+
   const [productList, setProductList] = useState<IProduct[] | null>(null)
 
   const [ currentProduct, setCurrentProduct ] = useState<IProduct | null>(null)
+
+  const [ listCart, setlistCart ] = useState<IProduct[] | null>(null)
 
   useEffect(() => {       
     const loadProducts = async () => {
@@ -102,7 +106,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }
 
   return (
-    <ProductContext.Provider value={{  productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
+    <ProductContext.Provider value={{ isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
       { children }
     </ProductContext.Provider>
   )

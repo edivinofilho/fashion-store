@@ -7,11 +7,28 @@ import { IProduct } from "../../providers/ProductsContext/@types.ts";
 import cart from "../../assets/cartPlus.svg"
 import { StyledProductList } from "../../styles/UlStyled.ts";
 import { ProductItem } from "../../components/ProductItem/index.tsx";
+import { ModalCart } from "../../components/shoppCart/index.tsx";
 
 export const ProductsPage = () => {
-  const { productList, currentProduct } = useContext(ProductContext)
+  const { productList, currentProduct, isModal, setlistCart, listCart } = useContext(ProductContext)
 
   const filterProductList = productList?.filter(product => product.id !== currentProduct?.id)
+
+  const addCart = () => {
+    const newList: IProduct[] = JSON.parse(localStorage.getItem('@cartFashionStore'))
+    if (newList != null && currentProduct != null) {
+      const list: IProduct[] = [...newList, currentProduct]
+      localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+    } else if(listCart != null && currentProduct != null) {
+      setlistCart([...listCart, currentProduct])
+      localStorage.setItem('@cartFashionStore', JSON.stringify(listCart))
+    } else {
+      localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+      if (currentProduct != null) {
+        setlistCart([currentProduct])
+      }
+    }
+  }
 
   return (
 
@@ -38,6 +55,7 @@ export const ProductsPage = () => {
         }
       </StyledProductList>
       </main>
+      {isModal ? <ModalCart /> : null}
       <FooterDefault />
     </ConteinerTopStyled>
   )
