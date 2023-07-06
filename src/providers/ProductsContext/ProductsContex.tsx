@@ -5,34 +5,31 @@ import { TAddNewProductForm } from "../../components/adminComponents/AddNewProdu
 import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
 
 
-export const ProductContext = createContext<IProductContextValue>({
-  productList: null,
-  removeProduct: (itemId: number) => {},
-  isModalNewProductOpen: false,
-  setIsModalNewProductsOpen: () => {},
-  submitAddNewProduct: async (formData: TAddNewProductForm) => {},
-  isModalEditProduct: false,
-  setisModalEditProduct: () => {},
-  submitEditProduct: async (formData: TeditProductFormSchema, productId: string) => {},
-})
-
+export const ProductContext = createContext({} as IProductContextValue)
+ 
 export const ProductsProvider = ({ children }:IProductProviderProps) => {
   const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
 
   const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
+  const [isModal, setisModal] = useState(false)
+
   const [productList, setProductList] = useState<IProduct[] | null>(null)
+
+  const [ currentProduct, setCurrentProduct ] = useState<IProduct | null>(null)
+
+  const [ listCart, setlistCart ] = useState<IProduct[] | null>(null)
 
   useEffect(() => {       
     const loadProducts = async () => {
       try {
         const { data } = await api.get('/products')
-        
-        setProductList(data) 
-    
-      } catch(error){
+
+        setProductList(data)
+
+      } catch (error) {
         console.log(error)
-                
+
       } finally {
         // setLoading(false)
       }
@@ -41,10 +38,10 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
   }, [])
 
-  const removeProduct = async (itemId : number) => {
+  const removeProduct = async (itemId: number) => {
     const token = localStorage.getItem('@TOKEN')
-   
-    if(productList !== null){
+
+    if (productList !== null) {
       try {
         api.delete(`/products/${itemId}`, {
           headers: {
@@ -56,13 +53,13 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
         setProductList(updatedProductList)
 
-      } catch (error){
+      } catch (error) {
         console.log(error)
       }
     }
-  } 
+  }
 
-  const submitAddNewProduct = async (formData: TAddNewProductForm) : Promise<void> => {
+  const submitAddNewProduct = async (formData: TAddNewProductForm): Promise<void> => {
     const token = localStorage.getItem("@TOKEN")
 
     try {
@@ -75,7 +72,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
       setProductList(updatedProductList)
       setIsModalNewProductsOpen(false)
 
-    } catch (error){
+    } catch (error) {
       console.log(error)
       setIsModalNewProductsOpen(false)
     }
@@ -84,7 +81,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   const submitEditProduct = async (formData: TeditProductFormSchema, productId: string) => {
     console.log(formData)
     const token = localStorage.getItem("@TOKEN")
-    
+
     try {
       const { data } = await api.put(`/products/${productId}`, formData, {
         headers: {
@@ -92,15 +89,15 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         }
       })
 
-      if(productList){
+      if (productList) {
         const productIndex = productList.findIndex(product => product.id.toString() === productId)
         if (productIndex !== -1) {
           const updatedProductList = [...productList]
-          updatedProductList[productIndex] = data 
+          updatedProductList[productIndex] = data
           setProductList(updatedProductList)
         }
       }
-    
+
     } catch (error) {
       console.log(error)
     }
@@ -109,7 +106,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }
 
   return (
-    <ProductContext.Provider value={{ productList, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
+    <ProductContext.Provider value={{ isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
       { children }
     </ProductContext.Provider>
   )

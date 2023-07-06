@@ -18,12 +18,18 @@ export interface IRemoveProduct {
 }
 
 export interface IProductContextValue {
-  productList: IProduct[] | null;
+  productList: IProduct[] | null;  
+  listCart: IProduct[] | null;  
   removeProduct: (itemId: number) => void;
   isModalNewProductOpen: boolean;
   setIsModalNewProductsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   submitAddNewProduct: (formData: TAddNewProductForm) => Promise<void>;
   isModalEditProduct: boolean,
+  isModal: boolean,
   setisModalEditProduct: React.Dispatch<React.SetStateAction<boolean>>,
+  setisModal: React.Dispatch<React.SetStateAction<boolean>>,
   submitEditProduct: (formData: TeditProductFormSchema, productId: string) => Promise<void>;
+  currentProduct: IProduct | null,
+  setCurrentProduct: React.Dispatch<React.SetStateAction<IProduct | null>>,
+  setlistCart: React.Dispatch<React.SetStateAction<IProduct[] | null>>,
 }
