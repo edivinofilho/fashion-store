@@ -41,12 +41,16 @@ export const StyledProductList = styled.ul<IStyledProductList>`
               }
         
               li {
-                width: 49%;
+                width: 47%;
 
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                flex-wrap: wrap;
+
                 list-style: none;
+
+                /* background-color: red; */
 
                 img {
                     width: 11rem;
@@ -56,23 +60,34 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                   }
 
                 div:first-child {
-                  width: 60%;
+                  width: 360px;
                   display: flex;
                   align-items: center;
+                  flex-wrap: wrap;
+
+
+                  /* background-color: yellow; */
     
                   p:nth-child(1) {
                     font: ${letterParagraph}; 
-                    width: 100%;
+                    width: 150px;
                     margin-bottom: 1.25rem;
+
+                    text-align: center;
+                    flex-wrap: wrap;
+
+                    /* background-color: green; */
                   }
 
                   p:nth-child(2){
                     font: ${letterPriceSmallBold};
+                    text-align: center;
+
                   }
                 }
 
                 div:nth-child(2) {
-                  width: 20%;
+                  width: 130px;
 
                   display: flex;
                   align-items: center;
@@ -88,9 +103,22 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 }
               }
     
-              @media screen and (max-width: 48rem) {
+              @media(max-width: 780px) {
                 li {
                   width: 100%;
+                  justify-content: center;
+
+                  div:first-child {
+                    justify-content: center;
+
+                    margin-bottom: 10px;
+                  }
+                }
+              }
+
+              @media(max-width: 1101px){
+                li {
+                  justify-content: center;
                 }
               }
             `;

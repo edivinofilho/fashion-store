@@ -138,7 +138,8 @@ export const letterMenu= css`
 
 export const letterParagraph= css`
     font-weight: var(--paragraphWeight);
-    font-size: var(--paragraphSize);
+    font-size: clamp(1rem, 5vw, var(--paragraphSize));
     line-height: var(--paragraphLineHeight);
     font-family: var(--fontParagraph);
 `
+
