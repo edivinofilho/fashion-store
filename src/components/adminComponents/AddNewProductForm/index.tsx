@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { ProductContext } from "../../../providers/ProductsContext/ProductsContex"
 import { StyledAddNewProductForm } from "./styles"
 import { ButtonStyled } from "../../../styles/Button"
+import { TextArea } from "../TextArea"
 
 
 export const AddNewProductForm = () => {
@@ -24,7 +25,8 @@ export const AddNewProductForm = () => {
       <Input placeholder="NOME" error={errors.name} {...register("name")}/>
       <Input placeholder="PREÇO (R$)" error={errors.price} {...register("price")}/>
       <Input placeholder="IMAGEM (URL)" error={errors.image} {...register("image")}/>
-      <Input placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>
+       <TextArea placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>
+
       <ButtonStyled styleTypeButton="black" type="submit">+ NOVO PRODUTO</ButtonStyled>
     </StyledAddNewProductForm>
   )
