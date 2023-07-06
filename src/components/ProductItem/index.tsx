@@ -12,7 +12,7 @@ interface IProductList {
 
 export const ProductItem = ({ item }: IProductList) => {
 
-  const { setCurrentProduct, currentProduct } = useContext(ProductContext)
+  const { setCurrentProduct } = useContext(ProductContext)
 
   const addCart = () => {
     const storage = localStorage.getItem('@cartFashionStore')
