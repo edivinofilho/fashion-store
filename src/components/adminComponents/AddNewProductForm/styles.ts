@@ -16,5 +16,14 @@ export const StyledAddNewProductForm = styled.form`
     position: absolute;
     right: 20px;
     bottom: 30px;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+
+    img {
+      width: 20px;
+    }
   }
 `

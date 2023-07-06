@@ -2,6 +2,7 @@ import { FooterStyled } from "../../components/Footer/styles"
 import { TopSectionAdmin } from "../../components/adminComponents/TopSectionAdmin"
 import { NavAdminBar } from "../../components/adminComponents/NavAdminBar"
 import { HeaderDefault } from "../../components/Header"
+import { StyledTopSectionContainer } from "../AdminDashboardPage/styles"
 
 
 export const AdminDashboardWelcomePage = () => {
@@ -11,8 +12,9 @@ export const AdminDashboardWelcomePage = () => {
     <>
       <HeaderDefault onlyBrand={true}/>
       <NavAdminBar />
-      <TopSectionAdmin title="PAINEL DO ADMINISTRADOR" message={`Seja bem vindo, ${user}!`}/>
-      
+      <StyledTopSectionContainer>
+        <TopSectionAdmin title="PAINEL DO ADMINISTRADOR" message={`Seja bem vindo, ${user}!`}/>
+      </StyledTopSectionContainer>
       <main>
       </main>
       <FooterStyled>

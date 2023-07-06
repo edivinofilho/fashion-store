@@ -32,7 +32,7 @@ export const StyledProductList = styled.ul<IStyledProductList>`
               display: flex;
               align-items: center;
               justify-content: space-around;
-              gap: 1.8rem;
+              gap: 2.7rem;
               flex-wrap: wrap;
 
               button {
@@ -41,29 +41,33 @@ export const StyledProductList = styled.ul<IStyledProductList>`
               }
         
               li {
-                width: 49%;
+                width: 47%;
 
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 list-style: none;
+                gap: 10px;
+                flex-wrap: wrap;
 
                 img {
-                    width: 11rem;
-                    height: 13rem;
+                    width: 10rem;
+                    height: 12rem;
 
                     margin-right: 1.25rem;
                   }
 
                 div:first-child {
-                  width: 60%;
+                  width: 400px;
                   display: flex;
                   align-items: center;
-    
+                  flex-wrap: wrap;
+
                   p:nth-child(1) {
                     font: ${letterParagraph}; 
-                    width: 100%;
+                    width: 130px;
                     margin-bottom: 1.25rem;
+
                   }
 
                   p:nth-child(2){
@@ -72,15 +76,13 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 }
 
                 div:nth-child(2) {
-                  width: 20%;
+                  width: 140px;
 
                   display: flex;
                   align-items: center;
                   justify-content: flex-end;
                   gap: 1rem;
 
-                  margin-left: 1rem;
-                  
                   .buttonIcon {
                     width: 2.2rem;
                     height: 2.2rem;
@@ -88,9 +90,14 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 }
               }
     
-              @media screen and (max-width: 48rem) {
+              @media(max-width: 760px) {
                 li {
                   width: 100%;
+                  justify-content: center;
+
+                  div:first-child {
+                    justify-content: space-evenly;
+                  }
                 }
               }
             `;
