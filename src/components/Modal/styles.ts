@@ -57,7 +57,7 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
       case "adminModal":
         return css`
           margin: 0 auto;
-          height: 37rem;
+          height: 41rem;
           max-width: 36rem;
           border-radius: 4px;
                     

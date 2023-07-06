@@ -7,6 +7,7 @@ import { ProductContext } from "../../../providers/ProductsContext/ProductsConte
 import { IProduct } from "../../../providers/ProductsContext/@types"
 import { StyledAddNewProductForm } from "../AddNewProductForm/styles"
 import { ButtonStyled } from "../../../styles/Button"
+import { TextArea } from "../TextArea"
 
 
 interface IEditProductFormProps {
@@ -38,7 +39,7 @@ export const EditProductForm = ( { product }: IEditProductFormProps) => {
       <Input placeholder="NOME" error={errors.name} {...register("name")}/>
       <Input placeholder="PREÇO (R$)" error={errors.price} {...register("price")} />
       <Input placeholder="IMAGEM (URL)" error={errors.image} {...register("image")} />
-      <Input placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")} />
+      <TextArea placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>   
       <ButtonStyled styleTypeButton="black" type="submit">EDITAR PRODUTO</ButtonStyled>
     </StyledAddNewProductForm>
   )
