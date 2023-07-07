@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { NavigateFunction, useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { toast } from "react-toastify"
@@ -39,7 +39,7 @@ interface IUserContext {
         setLoading: React.Dispatch<React.SetStateAction<boolean>>
       ) => Promise<void>;
     navigation: NavigateFunction;
-    
+    logout: () => void;
 
 }
 
@@ -58,7 +58,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         try {
             const { data } = await api.post("/login", formData)
 
-            localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
+            localStorage.setItem("@AcessToken", data.accessToken)
             localStorage.setItem("@User", JSON.stringify(data.user))
             navigation("/admin_welcome")
             setUser(data)
@@ -137,8 +137,26 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         } 
       };
 
+    const logout = ()  => {
+      localStorage.removeItem("@AcessToken")
+      localStorage.removeItem("@User")
+
+      toast.success("Saindo...", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+      
+    }
+
+
     return (
-        <UserContext.Provider value={{ user, setUser, login, navigation, userRegister }}>
+        <UserContext.Provider value={{ user, setUser, login, navigation, userRegister, logout }}>
             {children}
         </UserContext.Provider>
     )

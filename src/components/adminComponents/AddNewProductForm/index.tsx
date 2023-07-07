@@ -26,7 +26,7 @@ export const AddNewProductForm = () => {
       <Input placeholder="PREÇO (R$)" error={errors.price} {...register("price")}/>
       <Input placeholder="IMAGEM (URL)" error={errors.image} {...register("image")}/>
       <TextArea placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>
-      <ButtonStyled styleTypeButton="black" type="submit">+ NOVO PRODUTO</ButtonStyled>
+      <ButtonStyled styleTypeButton="black" type="submit">{<img src="../../../src/assets/plusSign.svg" alt="Sinal de adição"/>} NOVO PRODUTO</ButtonStyled>
     </StyledAddNewProductForm>
   )
 }

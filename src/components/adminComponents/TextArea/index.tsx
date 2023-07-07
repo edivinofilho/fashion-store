@@ -1,6 +1,6 @@
 import { TextareaHTMLAttributes, forwardRef } from "react"
 import { FieldError } from "react-hook-form";
-import { StyledTextArea } from "./styles.ts";
+import { StyledTextArea, TextAreaContainer } from "./styles.ts";
 
 interface ITextAreaProps extends TextareaHTMLAttributes <HTMLTextAreaElement> {
   placeholder: string;
@@ -9,9 +9,9 @@ interface ITextAreaProps extends TextareaHTMLAttributes <HTMLTextAreaElement> {
 
 export const TextArea = forwardRef<HTMLTextAreaElement, ITextAreaProps>(({ placeholder, error, ...rest}, ref) => {
   return (
-    <div>
+    <TextAreaContainer>
       <StyledTextArea ref={ref} placeholder={placeholder} {...rest}/>
       {error? <p>{error.message}</p> : null}
-    </div>
+    </TextAreaContainer>
   )
 })

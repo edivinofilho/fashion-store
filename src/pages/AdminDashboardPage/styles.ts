@@ -10,8 +10,6 @@ export const StyledTopSectionContainer =styled.div`
 
   padding: 0 35px;
   margin-bottom: 30px;
-
-  /* background-color: red; */
   
   button {
     width: 18rem;
@@ -19,6 +17,15 @@ export const StyledTopSectionContainer =styled.div`
 
     padding: 5px;
     margin: 10px 0 0 10px;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3125rem;
+    
+    img {
+      width: 1.0625rem;
+    }
   }
 
   @media(max-width: 400px) {

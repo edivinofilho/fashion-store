@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { letterTitle1 } from "../../styles/globalStyle.ts"
+import { imgCover, letterTitle1, letterTitle2 } from "../../styles/globalStyle.ts"
 
 export const MainStyled = styled.main`
     display: flex;
@@ -9,32 +9,33 @@ export const MainStyled = styled.main`
     gap: 25px;
     margin-top: 25px;
 
-    div{
+    .containerHome{
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         gap: 15px;
         align-items: center;
         justify-content: center;
-        padding: 0px 15px;
-
+        width: 100%;
+        margin-bottom: 50px;
     }
 
     .imgCover{
-        width: clamp(200px,80vw,900px);
+        ${imgCover}
     }
 
     .title{
-        ${letterTitle1}
+        ${letterTitle1};
+        word-break: keep-all;
+    }
+
+    h2{
+        ${letterTitle2}
     }
 
     @media (max-width: 600px){
 
-        align-items: center;
 
-        div{
-            flex-direction: column;
-        }
+
     }
-
 `

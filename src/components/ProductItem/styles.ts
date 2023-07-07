@@ -37,7 +37,6 @@ export const LiStyled = styled.li`
     .containerButton > button {
         width: 60px;
         height: 60px;
-        background-color: ${({ theme }) => theme.colors.black};
     }
 
     .containerButton > button > img{
