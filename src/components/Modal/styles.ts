@@ -71,6 +71,27 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
 
       case "adminModal":
         return css`
+
+          header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font: ${letterTitle3};
+            padding-left:1.25rem;
+
+            > button {
+              width: 2rem;
+              height: 2rem;
+              font-size: 35px;
+              cursor: pointer;
+              margin-right:1.25rem;
+
+              background-color: transparent;
+            }
+          }
+
           margin: 0 auto;
           height: 42.5rem;
           max-width: 37rem;

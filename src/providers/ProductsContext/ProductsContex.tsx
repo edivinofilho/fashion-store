@@ -84,7 +84,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }
 
   const submitAddNewProduct = async (formData: TAddNewProductForm): Promise<void> => {
-    const token = JSON.parse(localStorage.getItem("@AcessToken") || "")
+    const token = localStorage.getItem("@AcessToken") || ""
 
     const price = parseFloat(formData.price)
 
@@ -176,7 +176,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         theme: "colored",
       })
 
-      // console.log(error)
+      console.log(error)
     }
 
     setisModalEditProduct(false)
