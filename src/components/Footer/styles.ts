@@ -7,8 +7,8 @@ export const FooterStyled = styled.footer`
     width: 100%;
     min-height: 120px;
     height: auto;
-    background-color: ${({theme}) => theme.colors.black};
-    color: ${({theme}) => theme.colors.white};
+    /* background-color: ${({theme}) => theme.colors.black};
+    color: ${({theme}) => theme.colors.white}; */
     display: flex;
     justify-content: center;
     align-items: center;
