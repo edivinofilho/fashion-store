@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { letterTitle2, letterParagraph, letterTitle1 } from "../../../styles/globalStyle"
+import { letterTitle2, letterParagraph} from "../../../styles/globalStyle"
 
 export const StyledTopSectionAdmin = styled.section`
   width: 100%;
