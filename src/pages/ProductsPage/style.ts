@@ -1,40 +1,58 @@
 import { styled } from "styled-components";
+import { letterTitle2, letterMenu, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3 } from "../../styles/globalStyle";
 
-export const ConteinerTopStyled = styled.div`
+export const MainStyled = styled.main`
+    h2{
+        ${letterTitle2}
+        margin-bottom: 20px;
+    }
+`
+
+export const ProductMainStyled = styled.div`
 width: 100%;
-height: 100vh;
+height: auto;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 35px;
+padding-bottom: 30px; 
+margin-bottom: 170px;
+
+@media(max-width:800px){
+    margin-bottom: 25px;
+
+    .ProductContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.button{
+    ${letterMenu};
+    margin-right: 5px;
+}
+
+h3{
+    ${letterPriceSmall}
+}
+
 .HomeProduct{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 35px;
+    height: 40px;
 }
-
-`
-
-export const ProductMainStyled = styled.div`
-width: 100%;
-height: 932px;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-
 
 .ProductContainer{
     display: flex;
+    align-items: center;
     gap: 60px;
 
-    @media(max-width:800px){
-        flex-direction: column;
-        align-items: center;
-
-    }
-
     div{
-    
         width: 100%;
-        min-width: 280px;
+        min-width: 200px;
         max-width: 480px;
         display: flex;
         flex-direction: column;
@@ -52,23 +70,17 @@ flex-wrap: wrap;
     }
 
     h4{
-        font-family: 700;
-        font-size: 1.5rem;
+        ${letterTitle3}
     }
 
     span{
-        font-family: 400;
-        font-size: 2rem;
+        ${letterPriceBig}
     }
     p{
-        font-weight: 400;
-        font-size: 1.25rem;
-        line-height: 21px;
-        
+        ${letterParagraph}  
     }
     
 }
-
 
 .ProductMain{
     height: clamp(280px, 80vw, 500px);
