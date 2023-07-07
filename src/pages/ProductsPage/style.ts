@@ -15,22 +15,32 @@ height: 100vh;
 
 export const ProductMainStyled = styled.div`
 width: 100%;
-height: 500px;
+height: 932px;
 display: flex;
-align-items: center;
 justify-content: center;
-gap: 60px;
+flex-wrap: wrap;
 
 
-
-& > div:nth-child(2){
-    
-    width: 400px;
-    height: 319px;
+.ProductContainer{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
+    gap: 60px;
+
+    @media(max-width:800px){
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    div{
+    
+        width: 100%;
+        min-width: 280px;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+}
 
     button{
         width: 226px;
@@ -39,8 +49,6 @@ gap: 60px;
         align-items: center;
         justify-content: center;
         gap: 23px;
-        background-color: #000000;
-        color: white; 
     }
 
     h4{
@@ -60,4 +68,11 @@ gap: 60px;
     }
     
 }
+
+
+.ProductMain{
+    height: clamp(280px, 80vw, 500px);
+}
+
+
 `

@@ -36,7 +36,7 @@ export const ModalCart = () => {
     <Modal title="CARINHO" styleModal="shoppingCart" setModalState={() => setisModal(false)}>
       <UlStyled>
         {listCart != null ? listCart.map((item) => (
-          <li>
+          <li key={item.id}>
             <img className="image" src={item.image} />
             <div className="container">
               <div>

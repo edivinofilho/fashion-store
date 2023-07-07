@@ -10,6 +10,7 @@ export const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}/>
+      <Route path="/product/:id" element={<ProductsPage />}/>
       <Route path="/product" element={<ProductsPage />}/>
       <Route path="/register" element={<RegisterPage />}/>
       <Route path="/login" element={<LoginPage />}/>

@@ -60,7 +60,7 @@ export const ProductItem = ({ item }: IProductList) => {
         <p className="price">{item.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
         <div className="containerButton">
           <ButtonStyled styleTypeButton="black" onClick={addCart}><img src={cartPlus} alt="Carrinho com o sinal de + dentro" /></ButtonStyled>
-          <Link className="button" to="/product" onClick={() => { setCurrentProduct(item) }}> SAIBA MAIS</Link>
+          <Link className="button" to={`/product/${item.id}`} onClick={() => { setCurrentProduct(item) }}> SAIBA MAIS</Link>
         </div>
       </div>
     </LiStyled >

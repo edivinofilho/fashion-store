@@ -43,6 +43,9 @@ main{
     height: auto;
     padding: 0px 15px;
 }
+a {
+    text-decoration: none;
+  }
 
 button, .button{
     text-decoration: none;
