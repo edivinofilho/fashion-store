@@ -1,7 +1,7 @@
 import { FooterDefault } from "../../components/Footer/index.tsx"
 import { HeaderDefault } from "../../components/Header/index.tsx"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx";
-import { ConteinerTopStyled, ProductMainStyled } from "./style.ts"
+import { MainStyled, ProductMainStyled } from "./style.ts"
 import { useContext, useEffect } from 'react';
 import { IProduct } from "../../providers/ProductsContext/@types.ts";
 import cart from "../../assets/cartPlus.svg"
@@ -40,6 +40,19 @@ export const ProductsPage = () => {
   const filterProductList = productList?.filter(product => product.id !== currentProduct?.id)
 
 
+  const Toasty = () => {
+    toast.success('Produto Adicionado!', {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
   const addCart = () => {
     const storage = localStorage.getItem('@cartFashionStore')
     if (storage != null) {
@@ -47,53 +60,34 @@ export const ProductsPage = () => {
       if (currentProduct !== null) {
         const limiter = newList?.find((element) => element.id === currentProduct.id)
         if (limiter == undefined) {
+          Toasty()
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
             localStorage.setItem('@cartFashionStore', JSON.stringify(list))
-            toast.success('Produto Adicionado!', {
-              position: "top-left",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
           } else {
             localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
-            toast.success('Produto Adicionado!', {
-              position: "top-left",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
           }
         }
       }
+    } else {
+      Toasty()
+      localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
     }
   }
 
   return (
-
-    <ConteinerTopStyled>
+    <>
       <HeaderDefault onlyBrand={false} />
-      <main>
-
+      <MainStyled>
         <ProductMainStyled>
-          <div className="HomeProduct" ><Link className="button" to="/" >Home </Link> <h3>&gt; {currentProduct?.name}</h3></div>
+          <div className="HomeProduct" ><Link className="button" to="/" >Home</Link> <h3>&gt; {currentProduct?.name}</h3></div>
           <div className="ProductContainer">
             <img className="ProductMain" src={currentProduct?.image} />
-
             <div>
               <h4>{currentProduct?.name}</h4>
               <span>{currentProduct?.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</span>
               <p>{currentProduct?.description}</p>
-              <ButtonStyled styleTypeButton="black"  onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</ButtonStyled>
+              <ButtonStyled styleTypeButton="black" onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</ButtonStyled>
             </div>
           </div>
         </ProductMainStyled>
@@ -101,13 +95,12 @@ export const ProductsPage = () => {
         <StyledProductList styledDiv="otherPage" >
           {
             filterProductList?.map(item => <ProductItem key={item.id} item={item} />)
-
           }
         </StyledProductList>
-      </main>
+      </MainStyled>
       {isModal ? <ModalCart /> : null}
       <FooterDefault />
-      <ToastContainer/>
-    </ConteinerTopStyled>
+      <ToastContainer />
+    </>
   )
 }
