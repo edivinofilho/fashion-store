@@ -16,6 +16,11 @@ export const RegisterContent = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  .back {
+  text-decoration:none;
+  color:black;
+
+ }
 `;
 
 export const ImageContainer = styled.div`
@@ -52,7 +57,8 @@ ${letterTitle2}
 
 
   export const TextWelcome = styled.h5`
- ${letterParagraph}
+ ${letterParagraph};
+ 
 `
 
 export const ImgVector = styled.img`

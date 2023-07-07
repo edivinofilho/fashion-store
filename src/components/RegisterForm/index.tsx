@@ -39,7 +39,7 @@ export const RegisterForm = () => {
          
           type="text"
           id="name"
-          placeholder="Nome"
+          placeholder="NOME"
           error={errors.name}
           disabled={loading}
           {...register("name")}
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
          
           type="text"
           id="email"
-          placeholder="Email"
+          placeholder="E-MAIL"
           error={errors.email}
           disabled={loading}
           {...register("email")}
@@ -59,7 +59,7 @@ export const RegisterForm = () => {
           
           type="password"
           id="password"
-          placeholder="Senha"
+          placeholder="SENHA"
           error={errors.password}
           disabled={loading}
           {...register("password")}
@@ -68,7 +68,7 @@ export const RegisterForm = () => {
         <Input
           type="password"
           id="confirmPassword"
-          placeholder="Confirme sua senha"
+          placeholder="CONFIRMAR SENHA"
           error={errors.confirmPassword}
           disabled={loading}
           {...register("confirmPassword")}
