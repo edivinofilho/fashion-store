@@ -42,7 +42,12 @@ main{
     max-width: 1440px;
     height: auto;
     padding: 0px 15px;
+    margin-top: 25px;
 }
+
+a {
+    text-decoration: none;
+  }
 
 button, .button{
     text-decoration: none;

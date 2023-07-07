@@ -1,6 +1,6 @@
 interface IHeader {
-  title: string;
-  message: string;
+  title: string
+  message: string
 }
 
 export const Header = ({title, message}:IHeader) => {

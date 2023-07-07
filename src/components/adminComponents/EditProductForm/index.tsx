@@ -11,7 +11,7 @@ import { TextArea } from "../TextArea"
 
 
 interface IEditProductFormProps {
-  product: IProduct | null;
+  product: IProduct | null
 }
 
 export const EditProductForm = ( { product }: IEditProductFormProps) => {

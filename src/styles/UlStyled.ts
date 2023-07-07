@@ -2,7 +2,7 @@ import { styled, css } from "styled-components"
 import { letterParagraph, letterPriceSmallBold } from "./globalStyle"
 
 interface IStyledProductList {
-  styledDiv: "otherPage" | "adminPage";
+  styledDiv: "otherPage" | "adminPage"
 }
 
 export const StyledProductList = styled.ul<IStyledProductList>`
@@ -30,17 +30,17 @@ export const StyledProductList = styled.ul<IStyledProductList>`
               height: auto;
               display: flex;
               align-items: center;
-              justify-content: space-around;
-              gap: 1.8rem;
+              justify-content: flex-start;
+              gap: 1.6em;
               flex-wrap: wrap;
 
               button {
                 cursor: pointer;
                 background-color: transparent;
               }
-        
+              
               li {
-                width: 47%;
+                width: 48%;
 
                 display: flex;
                 align-items: center;
@@ -49,11 +49,10 @@ export const StyledProductList = styled.ul<IStyledProductList>`
 
                 list-style: none;
 
-                /* background-color: red; */
-
                 img {
                     width: 11rem;
                     height: 13rem;
+                    border-radius: 8px;
 
                     margin-right: 1.25rem;
                   }
@@ -63,25 +62,18 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                   display: flex;
                   align-items: center;
                   flex-wrap: wrap;
-
-
-                  /* background-color: yellow; */
-    
+      
                   p:nth-child(1) {
                     font: ${letterParagraph}; 
                     width: 150px;
                     margin-bottom: 1.25rem;
 
-                    text-align: center;
                     flex-wrap: wrap;
-
-                    /* background-color: green; */
                   }
 
                   p:nth-child(2){
                     font: ${letterPriceSmallBold};
-                    text-align: center;
-
+                    text-align: flex-start;
                   }
                 }
 
@@ -103,6 +95,8 @@ export const StyledProductList = styled.ul<IStyledProductList>`
               }
     
               @media(max-width: 780px) {
+                justify-content: center;
+
                 li {
                   width: 100%;
                   justify-content: center;
@@ -119,6 +113,10 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 li {
                   justify-content: center;
                 }
+              }
+
+              @media(max-width: 1240px){
+                gap: 1.8em;
               }
             `;
     }

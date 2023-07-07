@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react"
 import { StyledModalOverlay, StyledModalBox } from "./styles"
 
 interface IModalProps {
-  children: React.ReactNode;
-  title: string;
-  setModalState: () => void;
+  children: React.ReactNode
+  title: string
+  setModalState: () => void
   styleModal?: "shoppingCart" | "adminModal"
 }
 

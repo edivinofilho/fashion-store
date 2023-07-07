@@ -17,7 +17,7 @@ export const AdminDashboardPage = () => {
   
   const productList: IProduct[] | null = useContext(ProductContext).productList
 
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null)
 
   const { removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, isModalEditProduct, setisModalEditProduct } = useContext(ProductContext)
 
