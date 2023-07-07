@@ -14,6 +14,17 @@ body{
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+
+    ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.white};;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.black};
+    border-radius: 10px;
+}
 }
 
 #root{
@@ -23,7 +34,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: ${({theme}) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
 }
 
 main{
@@ -31,6 +42,18 @@ main{
     max-width: 1440px;
     height: auto;
     padding: 0px 15px;
+    margin-top: 25px;
+}
+
+a {
+    text-decoration: none;
+  }
+
+button, .button{
+    text-decoration: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.black};
+    border-radius: 3px;
 }
 
 `

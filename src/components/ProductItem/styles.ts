@@ -10,7 +10,9 @@ export const LiStyled = styled.li`
     gap: 20px;
 
     .image{
-        width: clamp(250px,68vw,332px);
+        width: clamp(230px,68vw,332px);
+        height: clamp(268px,68vw,383px);
+        border-radius: 20px;
     }
 
     .container{
@@ -37,7 +39,6 @@ export const LiStyled = styled.li`
     .containerButton > button {
         width: 60px;
         height: 60px;
-        background-color: ${({ theme }) => theme.colors.black};
     }
 
     .containerButton > button > img{

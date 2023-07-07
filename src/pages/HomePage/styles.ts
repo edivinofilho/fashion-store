@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { letterTitle1 } from "../../styles/globalStyle.ts"
+import { imgCover, letterPriceSmall, letterTitle1, letterTitle2 } from "../../styles/globalStyle.ts"
 
 export const MainStyled = styled.main`
     display: flex;
@@ -8,33 +8,55 @@ export const MainStyled = styled.main`
     align-items: start;
     gap: 25px;
     margin-top: 25px;
+    max-width: 1440px;
 
-    div{
+    .containerHome{
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 15px;
+        flex-wrap: wrap;
+        gap: clamp(15px, 1.5vw,50px);
         align-items: center;
+        justify-content: start;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .containerHome > div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        padding: 0px 15px;
+        gap: 25px;
+        align-items: start;
 
-    }
-
-    .imgCover{
-        width: clamp(200px,80vw,900px);
-    }
-
-    .title{
-        ${letterTitle1}
-    }
-
-    @media (max-width: 600px){
-
-        align-items: center;
-
-        div{
-            flex-direction: column;
+        button{
+            min-height: 60px;
+            max-width: 272px;
+            ${letterPriceSmall}
         }
     }
 
+    .imgCover{
+        ${imgCover}
+    }
+
+    .title{
+        ${letterTitle1};
+        word-break: keep-all;
+    }
+
+    h2{
+        ${letterTitle2}
+    }
+
+    @media (max-width: 1243px){
+
+        .containerHome{
+            justify-content: center;
+        }
+
+        .containerHome > div{
+            justify-content: start;
+        }
+    }
 `

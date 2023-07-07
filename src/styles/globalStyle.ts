@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --title1Size: 6.25rem;
     --title1LineHeight: 7.5rem;
 
-    --title1MobileSize: 3.75rem;
+    --title1MobileSize: 3.125rem;
     --title1MobileLineHeight: 5.5575rem;
 
     //TITLE 2
@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     --title2Size: 3.75rem;
     --title2LineHeight: 5.5575rem;
 
-    --title2MobileSize: 2.75rem;
+    --title2MobileSize: 2.125rem;
     --title2MobileLineHeight: 4.0756rem;
 
     //TITLE 3
@@ -122,23 +122,27 @@ export const letterPriceBig = css`
     font-family: var(--fontPrice);
 `
 
-export const letterPriceBigBold= css`
+export const letterPriceBigBold = css`
     font-weight: var(--bigPriceBoldWeight);
     font-size: var(--bigPriceBoldSize);
     line-height: var(--bigPriceBoldLineHeight);
     font-family: var(--fontPrice);
 `
 
-export const letterMenu= css`
+export const letterMenu = css`
     font-weight: var(--menuWeight);
     font-size: var(--menuSize);
     line-height: var(--menuLineHeight);
     font-family: var(--fontMenu);
 `
 
-export const letterParagraph= css`
+export const letterParagraph = css`
     font-weight: var(--paragraphWeight);
-    font-size: var(--paragraphSize);
+    font-size: clamp(1rem, 5vw, var(--paragraphSize));
     line-height: var(--paragraphLineHeight);
     font-family: var(--fontParagraph);
+`
+
+export const imgCover = css`
+    width: clamp(200px,80vw,750px);
 `

@@ -9,26 +9,40 @@ export const StyledTopSectionContainer =styled.div`
  
   display: flex;
   align-items: center;
+  max-width: 1440px;
 
+  padding: 0 50px 0 20px;
+  margin-bottom: 30px;
+  
   button {
-    width: 17rem;
+    width: 18rem;
     height: 3.75rem;
     
     margin-top: .7rem;
     margin-right: 3.1rem;
 
+    padding: 5px;
+    margin: 10px 0 0 10px;
+
     display:flex;
     align-items: center;
     justify-content: center;
-    gap: .7rem;
-
+    gap: .3125rem;
+    
     img {
-      width: 20px;
+      width: 1.0625rem;
     }
   }
 
   @media(max-width: 400px) {
+  
+    padding: 0 5px;
+    text-align: center;
     flex-wrap: wrap;
-    justify-content: center;
+
+    button {
+      margin: 0 auto;
+      align-self: center;
+    }
   }
 `

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { NavigateFunction, useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { toast } from "react-toastify"
@@ -23,13 +23,29 @@ interface IUser {
         email: string;
     }
 }
+ interface IResgisterFormData {
+    email: string;
+    password: string;
+    name: string;
+    confirmPassword: string;
+  }
 
 interface IUserContext {
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
     user: IUser | null;
     login: SubmitHandler<IFormData>;
+    userRegister: (
+        formData: IResgisterFormData,
+        setLoading: React.Dispatch<React.SetStateAction<boolean>>
+      ) => Promise<void>;
     navigation: NavigateFunction;
+    logout: () => void;
+
 }
+
+interface IUserRegisterResponse {   accessToken: string;   user: IUser; }
+
+
 
 export const UserContext = createContext({} as IUserContext)
 
@@ -42,7 +58,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         try {
             const { data } = await api.post("/login", formData)
 
-            localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
+            localStorage.setItem("@AcessToken", data.accessToken)
             localStorage.setItem("@User", JSON.stringify(data.user))
             navigation("/admin_welcome")
             setUser(data)
@@ -84,11 +100,65 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
                 })
             }
         }
+       
+        
+    }
+    const userRegister = async (
+        formData: IFormData,
+        setLoading: React.Dispatch<React.SetStateAction<boolean>>
+      ) => {
+        try {
+          setLoading(true);
+          await api.post<IUserRegisterResponse>("/users", formData);
+          toast.success("Cadastro efetuado com sucesso", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+          navigation("/login");
+        } catch (error) {
+          console.log(error);
+          toast.error("Algo deu errado, tente novamente", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+        window.location.reload()
+        } 
+      };
+
+    const logout = ()  => {
+      localStorage.removeItem("@AcessToken")
+      localStorage.removeItem("@User")
+
+      toast.success("Saindo...", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+      
     }
 
+
     return (
-        <UserContext.Provider value={{ user, setUser, login, navigation }}>
+        <UserContext.Provider value={{ user, setUser, login, navigation, userRegister,logout }}>
             {children}
         </UserContext.Provider>
     )
 }
+

@@ -11,7 +11,7 @@ export const HeaderStyled = styled.header<IStyledProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px 10px;
+    padding: 0px 15px;
     margin-top: 15px;
 
     div{
@@ -22,7 +22,6 @@ export const HeaderStyled = styled.header<IStyledProps>`
         height: auto;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
         align-items: center;
 
         ${({ onlyBrand }) => {

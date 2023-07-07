@@ -5,17 +5,24 @@ export const StyledNavAdminBar = styled.nav`
   width: 100%;
   min-height: 3rem;
   max-width: 1440px;
-  margin-left: 1.8rem;
-  margin-bottom: 1.25rem;
 
+  display: flex;
+  padding: 0 25px;
+  margin: 1.25rem;
+
+ 
   > ul {
     width: 100%;
-    height: 3rem;
+    height: auto;
 
     display: flex;
     align-items: center;
     list-style: none;
     flex-wrap: wrap;
+
+    li { 
+      height: auto;
+    }
 
     li > a {
       text-decoration: none;
@@ -27,6 +34,18 @@ export const StyledNavAdminBar = styled.nav`
 
       &:visited {
         color:#000000; 
+      }
+    }
+  }
+
+  @media(max-width: 400px){
+    margin: 1rem 0 4rem 0;
+    ul {
+      li {
+        width: 220px;
+        a{
+          margin: 0;
+        }
       }
     }
   }
