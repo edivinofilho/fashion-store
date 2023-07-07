@@ -52,6 +52,7 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 img {
                     width: 11rem;
                     height: 13rem;
+                    border-radius: 8px;
 
                     margin-right: 1.25rem;
                   }

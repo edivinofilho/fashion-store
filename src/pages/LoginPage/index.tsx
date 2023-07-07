@@ -41,9 +41,4 @@ export const LoginPage = () => {
       <FooterDefault />
     </>
   )
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 3d3c72244b7e8baf5d517088cbfaebb078ed478b

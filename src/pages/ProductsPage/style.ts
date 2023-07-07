@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { letterTitle2, letterMenu, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3 } from "../../styles/globalStyle";
+import { letterTitle2, letterMenu, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3, letterPriceSmallBold } from "../../styles/globalStyle";
 
 export const MainStyled = styled.main`
     h2{
@@ -28,7 +28,8 @@ margin-bottom: 170px;
 }
 
 .button{
-    ${letterMenu};
+    ${letterPriceSmallBold};
+    font-size: 1.125rem;
     margin-right: 5px;
 }
 
