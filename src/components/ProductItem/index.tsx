@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx";
 import { Link } from "react-router-dom";
 import { ButtonStyled } from "../../styles/Button.ts";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface IProductList {
   item: IProduct;
@@ -23,8 +25,28 @@ export const ProductItem = ({ item }: IProductList) => {
         if (newList != null && item != null) {
           const list: IProduct[] = [...newList, item]
           localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+          toast.success('Produto Adicionado!', {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         } else if (item != null) {
           localStorage.setItem('@cartFashionStore', JSON.stringify([item]))
+          toast.success('Produto Adicionado!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         }
       }
     }
