@@ -40,7 +40,7 @@ export const EditProductForm = ( { product }: IEditProductFormProps) => {
       <Input placeholder="PREÇO (R$)" error={errors.price} {...register("price")} />
       <Input placeholder="IMAGEM (URL)" error={errors.image} {...register("image")} />
       <TextArea placeholder="DESCRIÇÃO RESUMIDA" error={errors.description} {...register("description")}/>   
-      <ButtonStyled styleTypeButton="black" type="submit">EDITAR PRODUTO</ButtonStyled>
+      <ButtonStyled styleTypeButton="black" type="submit"> {<img src="../../src/assets/editSign.png" alt="Botão para confirmar edição do produto"/>}EDITAR PRODUTO</ButtonStyled>
     </StyledAddNewProductForm>
   )
 }

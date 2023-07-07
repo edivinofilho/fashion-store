@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { letterMenu, letterPriceSmall } from "../../../styles/globalStyle"
 
 export const StyledTextArea = styled.textarea`
     background-color: ${({ theme }) => theme.colors.grey};
@@ -10,6 +11,8 @@ export const StyledTextArea = styled.textarea`
 
     resize: none;
     height: 110px;
+    font: ${letterMenu};
+    font-size: 14px;
 
     &::placeholder{
         color: grey;
@@ -19,4 +22,10 @@ export const StyledTextArea = styled.textarea`
         border: 1px solid grey;
         outline: none;
     }
+`
+export const TextAreaContainer = styled.div`
+  p {
+    font:${letterPriceSmall};
+    color: red;
+  }
 `

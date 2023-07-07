@@ -72,10 +72,20 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
       case "adminModal":
         return css`
           margin: 0 auto;
-          height: 41rem;
-          max-width: 36rem;
+          height: 42.5rem;
+          max-width: 37rem;
           border-radius: 4px;
-          padding: 10px 20px 0px 20px;
+
+          @media(max-width: 600px){
+            width: 95%;
+          }
+
+          @media(max-width:420px){
+            height: 50rem;;
+            button {
+              width: 85%;
+            }
+          }          
         `;
     }
   }}

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { NavigateFunction, useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { toast } from "react-toastify"
@@ -29,6 +29,8 @@ interface IUserContext {
     user: IUser | null;
     login: SubmitHandler<IFormData>;
     navigation: NavigateFunction;
+    logout: () => void;
+
 }
 
 export const UserContext = createContext({} as IUserContext)
@@ -86,8 +88,26 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         }
     }
 
+    const logout = ()  => {
+      localStorage.removeItem("@AcessToken")
+      localStorage.removeItem("@User")
+
+      toast.success("Saindo...", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+      
+    }
+
+
     return (
-        <UserContext.Provider value={{ user, setUser, login, navigation }}>
+        <UserContext.Provider value={{ user, setUser, login, navigation, logout }}>
             {children}
         </UserContext.Provider>
     )
