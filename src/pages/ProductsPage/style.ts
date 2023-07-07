@@ -85,6 +85,7 @@ h3{
 
 .ProductMain{
     height: clamp(280px, 80vw, 500px);
+    border-radius: 8px;
 }
 
 

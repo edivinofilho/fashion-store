@@ -5,9 +5,7 @@ import imgCover from '../../assets/Rectangle 2.png';
 import vector from '../../assets/Vector.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
-import { RegisterContainer,ImageContainer,FormContainer, TextRegister,TextWelcome,ImgVector, RegisterContent } from './style';
-
+import { RegisterContainer, ImageCover, FormContainer, TextRegister, TextWelcome, ImgVector, RegisterContent } from './style';
 
 export const RegisterPage = () => {
   const [nome, setNome] = useState('');
@@ -37,33 +35,22 @@ export const RegisterPage = () => {
     setMensagem('Cadastro realizado com sucesso.');
   };
   return (
-    
-      <div>
+
+    <>
       <HeaderDefault onlyBrand={true} />
       <RegisterContainer>
-        
-      <ImageContainer>
-          <img src={imgCover} alt="Imagem de capa" />
-        </ImageContainer>
+        <ImageCover src={imgCover} alt="Imagem de capa" />
         <FormContainer>
-        <RegisterContent>
-
-        <ImgVector src={vector} alt="Imagem de vector" />
-       
-        <Link className='back' to="/"><TextWelcome>Voltar</TextWelcome></Link>
-        </RegisterContent>
-
-        <TextRegister>CADASTRAR-SE</TextRegister>
-  <TextWelcome>Seja bem-vindo administrador!</TextWelcome>
-        <RegisterForm />
+          <RegisterContent>
+            <ImgVector src={vector} alt="Imagem de vector" />
+            <Link className='back' to="/"><TextWelcome>Voltar</TextWelcome></Link>
+          </RegisterContent>
+          <TextRegister>CADASTRAR-SE</TextRegister>
+          <TextWelcome>Seja bem-vindo administrador!</TextWelcome>
+          <RegisterForm />
         </FormContainer>
-
-        </RegisterContainer>
-        <FooterDefault />
-
-      </div>
-
-   
-    
+      </RegisterContainer>
+      <FooterDefault />
+    </>
   );
 };

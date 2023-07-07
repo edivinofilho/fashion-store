@@ -33,10 +33,7 @@ export const RegisterForm = () => {
   return (
     <>
       <StyledForm onSubmit={handleSubmit(submit)}>
-        
-
         <Input
-         
           type="text"
           id="name"
           placeholder="NOME"
@@ -74,7 +71,7 @@ export const RegisterForm = () => {
           {...register("confirmPassword")}
         />
 
-        <ButtonStyled styleTypeButton="back"
+        <ButtonStyled styleTypeButton="black"
           type="submit"
         >CADASTRAR-SE
         </ButtonStyled>

@@ -19,6 +19,7 @@ export const InputStyled = styled.input`
     }
 `
 export const InputContainer = styled.div`
+  width: 100%;
   p {
     font:${letterPriceSmall};
     color: red;
