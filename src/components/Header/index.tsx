@@ -18,7 +18,7 @@ export const HeaderDefault = ({ onlyBrand }: IProps) => {
            if(newList != null){
                 setlistCart(newList)
         }
-    }, [listCart])
+    }, [])
 
 
     return (

@@ -15,17 +15,25 @@ height: 100vh;
 
 export const ProductMainStyled = styled.div`
 width: 100%;
-height: 500px;
+height: 932px;
 display: flex;
-align-items: center;
 justify-content: center;
-gap: 60px;
+flex-wrap: wrap;
+gap: 30px;
 
+.ProductContainer{
+    display: flex;
+    gap: 60px;
 
+    @media(max-width:425px){
+        flex-direction: column;
+        align-items: center;
 
-& > div:nth-child(2){
+    }
+
+    div{
     
-    width: 400px;
+    width: clamp(280px, 80vw, 499px);
     height: 319px;
     display: flex;
     flex-direction: column;
@@ -39,8 +47,6 @@ gap: 60px;
         align-items: center;
         justify-content: center;
         gap: 23px;
-        background-color: #000000;
-        color: white; 
     }
 
     h4{
@@ -60,4 +66,11 @@ gap: 60px;
     }
     
 }
+}
+
+.ProductMain{
+    height: clamp(280px, 80vw, 500px);
+}
+
+
 `
