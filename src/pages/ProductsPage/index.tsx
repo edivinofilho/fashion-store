@@ -8,7 +8,9 @@ import cart from "../../assets/cartPlus.svg"
 import { StyledProductList } from "../../styles/UlStyled.ts";
 import { ProductItem } from "../../components/ProductItem/index.tsx";
 import { ModalCart } from "../../components/shoppCart/index.tsx";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { api } from "../../services/api.ts";
 import { ButtonStyled } from "../../styles/Button.ts";
 
@@ -39,17 +41,39 @@ export const ProductsPage = () => {
 
 
   const addCart = () => {
-    const newList: IProduct[] = JSON.parse(localStorage.getItem('@cartFashionStore'))
-    if (newList != null && currentProduct != null) {
-      const list: IProduct[] = [...newList, currentProduct]
-      localStorage.setItem('@cartFashionStore', JSON.stringify(list))
-    } else if (listCart != null && currentProduct != null) {
-      setlistCart([...listCart, currentProduct])
-      localStorage.setItem('@cartFashionStore', JSON.stringify(listCart))
-    } else {
-      localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
-      if (currentProduct != null) {
-        setlistCart([currentProduct])
+    const storage = localStorage.getItem('@cartFashionStore')
+    if (storage != null) {
+      const newList: IProduct[] = JSON.parse(storage)
+      if (currentProduct !== null) {
+        const limiter = newList?.find((element) => element.id === currentProduct.id)
+        if (limiter == undefined) {
+          if (newList != null) {
+            const list: IProduct[] = [...newList, currentProduct]
+            localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+            toast.success('Produto Adicionado!', {
+              position: "top-left",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          } else {
+            localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+            toast.success('Produto Adicionado!', {
+              position: "top-left",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }
+        }
       }
     }
   }
@@ -61,7 +85,7 @@ export const ProductsPage = () => {
       <main>
 
         <ProductMainStyled>
-          <div className="HomeProduct" ><Link to="/" >Home </Link> <h3>&gt; {currentProduct?.name}</h3></div>
+          <div className="HomeProduct" ><Link className="button" to="/" >Home </Link> <h3>&gt; {currentProduct?.name}</h3></div>
           <div className="ProductContainer">
             <img className="ProductMain" src={currentProduct?.image} />
 
@@ -83,6 +107,7 @@ export const ProductsPage = () => {
       </main>
       {isModal ? <ModalCart /> : null}
       <FooterDefault />
+      <ToastContainer/>
     </ConteinerTopStyled>
   )
 }

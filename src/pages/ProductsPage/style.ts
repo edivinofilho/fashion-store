@@ -19,13 +19,13 @@ height: 932px;
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
-gap: 30px;
+
 
 .ProductContainer{
     display: flex;
     gap: 60px;
 
-    @media(max-width:425px){
+    @media(max-width:800px){
         flex-direction: column;
         align-items: center;
 
@@ -33,12 +33,14 @@ gap: 30px;
 
     div{
     
-    width: clamp(280px, 80vw, 499px);
-    height: 319px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
+        width: 100%;
+        min-width: 280px;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+}
 
     button{
         width: 226px;
@@ -66,7 +68,7 @@ gap: 30px;
     }
     
 }
-}
+
 
 .ProductMain{
     height: clamp(280px, 80vw, 500px);

@@ -29,7 +29,7 @@ export const AdminDashboardPage = () => {
       <StyledTopSectionContainer>
         <TopSectionAdmin title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
         <ButtonStyled styleTypeButton="black" 
-        onClick={() => setIsModalNewProductsOpen(true)}> + NOVO PRODUTO</ButtonStyled>
+        onClick={() => setIsModalNewProductsOpen(true)}> {<img src="../../src/assets/plusSign.svg" alt="Sinal de adição"/>} NOVO PRODUTO</ButtonStyled>
       </StyledTopSectionContainer>
     
       <main>
@@ -59,14 +59,14 @@ export const AdminDashboardPage = () => {
         </StyledProductList>
 
         { isModalNewProductOpen ? 
-          <Modal title="NOVO PRODUTO" setModalState={() => setIsModalNewProductsOpen(false)}>
+          <Modal title="NOVO PRODUTO" styleModal="adminModal"  setModalState={() => setIsModalNewProductsOpen(false)}>
             <AddNewProductForm />
           </Modal>
           : null
         }
 
         { isModalEditProduct ? 
-          <Modal title="EDITAR PRODUTO" setModalState={() => setisModalEditProduct(false)}>
+          <Modal title="EDITAR PRODUTO" styleModal="adminModal" setModalState={() => setisModalEditProduct(false)}>
             <EditProductForm product={selectedProduct}/>
           </Modal>
           : null

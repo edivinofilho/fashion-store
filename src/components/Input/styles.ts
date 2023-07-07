@@ -1,4 +1,5 @@
 import { styled } from "styled-components"
+import { letterPriceSmall } from "../../styles/globalStyle"
 
 export const InputStyled = styled.input`
     background-color: ${({ theme }) => theme.colors.grey};
@@ -16,4 +17,10 @@ export const InputStyled = styled.input`
         border: 1px solid grey;
         outline: none;
     }
+`
+export const InputContainer = styled.div`
+  p {
+    font:${letterPriceSmall};
+    color: red;
+  }
 `

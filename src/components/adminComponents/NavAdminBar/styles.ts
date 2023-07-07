@@ -8,9 +8,7 @@ export const StyledNavAdminBar = styled.nav`
 
   display: flex;
   padding: 0 35px;
-  margin-bottom: 1.25rem;
-
-  /* background-color: yellow; */
+  margin: 1.25rem;
 
   > ul {
     width: 100%;
@@ -21,10 +19,8 @@ export const StyledNavAdminBar = styled.nav`
     list-style: none;
     flex-wrap: wrap;
 
-    /* background-color: green; */
     li { 
       height: auto;
-      /* background-color: tomato; */
     }
 
     li > a {
@@ -35,8 +31,6 @@ export const StyledNavAdminBar = styled.nav`
 
       margin-right: 1.8rem;
 
-      /* background: blue; */
-
       &:visited {
         color:#000000; 
       }
@@ -44,6 +38,7 @@ export const StyledNavAdminBar = styled.nav`
   }
 
   @media(max-width: 400px){
+    margin: 1rem 0 4rem 0;
     ul {
       li {
         width: 220px;
