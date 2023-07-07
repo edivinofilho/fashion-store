@@ -1,7 +1,7 @@
 import { HeaderStyled } from "./styles.ts"
 import logo from "../../assets/FAshionSTORE.svg"
 import cart from "../../assets/cart.svg"
-import { useContext, useEffect } from "react"
+import { useContext} from "react"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx"
 import { IProduct } from "../../providers/ProductsContext/@types.ts"
 
