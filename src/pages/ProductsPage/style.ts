@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { letterTitle2, letterMenu, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3, letterPriceSmallBold } from "../../styles/globalStyle";
+import { letterTitle2, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3, letterPriceSmallBold } from "../../styles/globalStyle";
 
 export const MainStyled = styled.main`
     h2{
