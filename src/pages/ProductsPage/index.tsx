@@ -15,17 +15,19 @@ export const ProductsPage = () => {
   const filterProductList = productList?.filter(product => product.id !== currentProduct?.id)
 
   const addCart = () => {
-    const newList: IProduct[] = JSON.parse(localStorage.getItem('@cartFashionStore'))
-    if (newList != null && currentProduct != null) {
-      const list: IProduct[] = [...newList, currentProduct]
-      localStorage.setItem('@cartFashionStore', JSON.stringify(list))
-    } else if(listCart != null && currentProduct != null) {
-      setlistCart([...listCart, currentProduct])
-      localStorage.setItem('@cartFashionStore', JSON.stringify(listCart))
-    } else {
-      localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
-      if (currentProduct != null) {
-        setlistCart([currentProduct])
+    const storage = localStorage.getItem('@cartFashionStore')
+    if (storage != null) {
+      const newList: IProduct[] = JSON.parse(storage)
+      if (currentProduct !== null) {
+        const limiter = newList?.find((element) => element.id === currentProduct.id)
+        if (limiter == undefined) {
+          if (newList != null) {
+            const list: IProduct[] = [...newList, currentProduct]
+            localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+          } else {
+            localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+          }
+        }
       }
     }
   }
@@ -35,25 +37,25 @@ export const ProductsPage = () => {
     <ConteinerTopStyled>
       <HeaderDefault onlyBrand={false} />
       <main>
-      <div className="HomeProduct" ><h3 >Home &gt; {currentProduct?.name}</h3></div>
-      <ProductMainStyled>
-        <div>
-          <img src={currentProduct?.image} />
-        </div>
-        <div>
-          <h4>{currentProduct?.name}</h4>
-          <span>{currentProduct?.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</span>
-          <p>{currentProduct?.description}</p>
-          <button onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</button>
-        </div>
-      </ProductMainStyled>
-      <h2>Veja Também</h2>
-      <StyledProductList styledDiv="otherPage" >
-        {
-          filterProductList?.map(item => <ProductItem key={item.id} item={item} />)
+        <div className="HomeProduct" ><h3 >Home &gt; {currentProduct?.name}</h3></div>
+        <ProductMainStyled>
+          <div>
+            <img src={currentProduct?.image} />
+          </div>
+          <div>
+            <h4>{currentProduct?.name}</h4>
+            <span>{currentProduct?.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</span>
+            <p>{currentProduct?.description}</p>
+            <button onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</button>
+          </div>
+        </ProductMainStyled>
+        <h2>Veja Também</h2>
+        <StyledProductList styledDiv="otherPage" >
+          {
+            filterProductList?.map(item => <ProductItem key={item.id} item={item} />)
 
-        }
-      </StyledProductList>
+          }
+        </StyledProductList>
       </main>
       {isModal ? <ModalCart /> : null}
       <FooterDefault />
