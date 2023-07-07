@@ -8,6 +8,7 @@ import imgCover from "../../assets/imgCover.svg"
 import { MainStyled } from "./styles.ts"
 import { ModalCart } from "../../components/shoppCart/index.tsx"
 import { ToastContainer } from 'react-toastify';
+import { ButtonStyled } from "../../styles/Button.ts"
 
 export const HomePage = () => {
 
@@ -19,7 +20,10 @@ export const HomePage = () => {
       <MainStyled>
         <div className="containerHome">
           <img className="imgCover" src={imgCover} alt='' />
-          <h1 className="title">KENZIE<br />FASHION<br />STORE</h1>
+          <div>
+            <h1 className="title">KENZIE<br />FASHION<br />STORE</h1>
+            <ButtonStyled styleTypeButton="black" >CONFIRA AS OFERTAS</ButtonStyled>
+          </div>
         </div>
         <h2>PRODUTOS EM DESTAQUE</h2>
         <StyledProductList styledDiv="otherPage" >

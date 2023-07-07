@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Modal } from "../Modal/index.tsx";
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx";
 import { UlStyled } from "./styles.ts";
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const ModalCart = () => {
 
-  const { setisModal, listCart, setlistCart, productList } = useContext(ProductContext)
+  const { setisModal, listCart, setlistCart } = useContext(ProductContext)
 
   const value: number | undefined = listCart?.reduce((acc, item) => acc + item.price, 0)
 
@@ -36,7 +36,7 @@ export const ModalCart = () => {
     <Modal title="CARINHO" styleModal="shoppingCart" setModalState={() => setisModal(false)}>
       <UlStyled>
         {listCart != null ? listCart.map((item) => (
-          <li>
+          <li key={item.id}>
             <img className="image" src={item.image} />
             <div className="container">
               <div>

@@ -1,36 +1,64 @@
 import { styled } from "styled-components";
+import { letterTitle2, letterMenu, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3 } from "../../styles/globalStyle";
 
-export const ConteinerTopStyled = styled.div`
+export const MainStyled = styled.main`
+    h2{
+        ${letterTitle2}
+        margin-bottom: 20px;
+    }
+`
+
+export const ProductMainStyled = styled.div`
 width: 100%;
-height: 100vh;
+height: auto;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 35px;
+padding-bottom: 30px; 
+margin-bottom: 170px;
+
+@media(max-width:800px){
+    margin-bottom: 25px;
+
+    .ProductContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.button{
+    ${letterMenu};
+    margin-right: 5px;
+}
+
+h3{
+    ${letterPriceSmall}
+}
+
 .HomeProduct{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 35px;
+    height: 40px;
 }
 
-`
-
-export const ProductMainStyled = styled.div`
-width: 100%;
-height: 500px;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 60px;
-
-
-
-& > div:nth-child(2){
-    
-    width: 400px;
-    height: 319px;
+.ProductContainer{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
+    align-items: center;
+    gap: 60px;
+
+    div{
+        width: 100%;
+        min-width: 200px;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+}
 
     button{
         width: 226px;
@@ -39,25 +67,24 @@ gap: 60px;
         align-items: center;
         justify-content: center;
         gap: 23px;
-        background-color: #000000;
-        color: white; 
     }
 
     h4{
-        font-family: 700;
-        font-size: 1.5rem;
+        ${letterTitle3}
     }
 
     span{
-        font-family: 400;
-        font-size: 2rem;
+        ${letterPriceBig}
     }
     p{
-        font-weight: 400;
-        font-size: 1.25rem;
-        line-height: 21px;
-        
+        ${letterParagraph}  
     }
     
 }
+
+.ProductMain{
+    height: clamp(280px, 80vw, 500px);
+}
+
+
 `
