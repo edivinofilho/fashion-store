@@ -48,6 +48,8 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                 flex-wrap: wrap;
 
                 list-style: none;
+                gap: 10px;
+                flex-wrap: wrap;
 
                 img {
                     width: 11rem;
@@ -85,8 +87,6 @@ export const StyledProductList = styled.ul<IStyledProductList>`
                   justify-content: flex-end;
                   gap: 1rem;
 
-                  margin-left: 1rem;
-                  
                   .buttonIcon {
                     width: 2.2rem;
                     height: 2.2rem;
