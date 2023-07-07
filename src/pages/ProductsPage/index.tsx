@@ -16,7 +16,7 @@ import { ButtonStyled } from "../../styles/Button.ts";
 
 export const ProductsPage = () => {
 
-  const { productList, currentProduct, isModal, setlistCart, listCart, setCurrentProduct } = useContext(ProductContext)
+  const { productList, currentProduct, isModal, setCurrentProduct } = useContext(ProductContext)
 
   const navigate = useNavigate()
 
