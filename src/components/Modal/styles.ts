@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { letterTitle3 } from "../../styles/globalStyle"
 
 interface IStyledModalBox {
-  styleModal: "shoppingCart" | "adminModal"
+  stylemodal: "shoppingCart" | "adminModal"
 }
 
 
@@ -47,8 +47,8 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
             }
           }
 
-  ${({ styleModal }) => {
-    switch (styleModal) {
+  ${({ stylemodal }) => {
+    switch (stylemodal) {
       case "shoppingCart":
         return css`
           /* Estilização para o shoppingCart */
@@ -57,10 +57,20 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
       case "adminModal":
         return css`
           margin: 0 auto;
-          height: 41rem;
-          max-width: 36rem;
+          height: 42.5rem;
+          max-width: 37rem;
           border-radius: 4px;
-                    
+
+          @media(max-width: 600px){
+            width: 95%;
+          }
+
+          @media(max-width:420px){
+            height: 50rem;;
+            button {
+              width: 85%;
+            }
+          }          
         `;
     }
   }}

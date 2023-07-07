@@ -3,6 +3,8 @@ import { api } from "../../services/api"
 import { IProduct, IProductProviderProps, IProductContextValue } from "./@types"
 import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema"
 import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 
 export const ProductContext = createContext({} as IProductContextValue)
@@ -39,7 +41,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   }, [])
 
   const removeProduct = async (itemId: number) => {
-    const token = localStorage.getItem('@TOKEN')
+    const token = localStorage.getItem("@AcessToken")
 
     if (productList !== null) {
       try {
@@ -53,17 +55,43 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
         setProductList(updatedProductList)
 
+        toast.success("Produto removido com sucesso", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+      })
+
       } catch (error) {
+
+        toast.error("Ups, houve um problema, tente novamente", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
         console.log(error)
       }
     }
   }
 
   const submitAddNewProduct = async (formData: TAddNewProductForm): Promise<void> => {
-    const token = localStorage.getItem("@TOKEN")
+    const token = JSON.parse(localStorage.getItem("@AcessToken") || "")
+
+    const price = parseFloat(formData.price)
 
     try {
-      const { data } = await api.post("/products", formData, {
+      const { data } = await api.post("/products", {
+        ...formData, price: price
+      }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -72,7 +100,29 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
       setProductList(updatedProductList)
       setIsModalNewProductsOpen(false)
 
+      toast.success("Produto adicionado com sucesso", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    })
+
     } catch (error) {
+      toast.error("Ups, houve um problema, tente novamente", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+
       console.log(error)
       setIsModalNewProductsOpen(false)
     }
@@ -80,10 +130,14 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
   const submitEditProduct = async (formData: TeditProductFormSchema, productId: string) => {
     console.log(formData)
-    const token = localStorage.getItem("@TOKEN")
+    const token = localStorage.getItem("@AcessToken")
+
+    const price = parseFloat(formData.price)
 
     try {
-      const { data } = await api.put(`/products/${productId}`, formData, {
+      const { data } = await api.put(`/products/${productId}`, {
+        ...formData, price: price
+      }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -98,8 +152,31 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         }
       }
 
+      toast.success("Produto editado com sucesso", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    })
+
     } catch (error) {
-      console.log(error)
+
+      toast.error("Ups, houve um problema, tente novamente", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+
+      // console.log(error)
     }
 
     setisModalEditProduct(false)

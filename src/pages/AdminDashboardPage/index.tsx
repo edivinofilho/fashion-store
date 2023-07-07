@@ -29,7 +29,7 @@ export const AdminDashboardPage = () => {
       <StyledTopSectionContainer>
         <TopSectionAdmin title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
         <ButtonStyled styleTypeButton="black" 
-        onClick={() => setIsModalNewProductsOpen(true)}> + NOVO PRODUTO</ButtonStyled>
+        onClick={() => setIsModalNewProductsOpen(true)}> {<img src="../../src/assets/plusSign.svg" alt="Sinal de adição"/>} NOVO PRODUTO</ButtonStyled>
       </StyledTopSectionContainer>
     
       <main>

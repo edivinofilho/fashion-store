@@ -35,7 +35,7 @@ export const Modal = ({children, title, setModalState} : IModalProps) => {
 
   return (
     <StyledModalOverlay role={"dialog"}>
-      <StyledModalBox styleModal="adminModal" ref={modalRef}>
+      <StyledModalBox stylemodal="adminModal" ref={modalRef}>
         <header>
           {title}
           <button onClick={()=> setModalState()}>X</button>
