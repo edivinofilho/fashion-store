@@ -44,7 +44,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         try {
             const { data } = await api.post("/login", formData)
 
-            localStorage.setItem("@AcessToken", JSON.stringify(data.accessToken))
+            localStorage.setItem("@AcessToken", data.accessToken)
             localStorage.setItem("@User", JSON.stringify(data.user))
             navigation("/admin_welcome")
             setUser(data)
