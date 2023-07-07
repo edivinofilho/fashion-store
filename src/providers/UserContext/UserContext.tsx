@@ -23,13 +23,29 @@ interface IUser {
         email: string;
     }
 }
+ interface IResgisterFormData {
+    email: string;
+    password: string;
+    name: string;
+    confirmPassword: string;
+  }
 
 interface IUserContext {
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
     user: IUser | null;
     login: SubmitHandler<IFormData>;
+    userRegister: (
+        formData: IResgisterFormData,
+        setLoading: React.Dispatch<React.SetStateAction<boolean>>
+      ) => Promise<void>;
     navigation: NavigateFunction;
+    
+
 }
+
+interface IUserRegisterResponse {   accessToken: string;   user: IUser; }
+
+
 
 export const UserContext = createContext({} as IUserContext)
 
@@ -84,11 +100,47 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
                 })
             }
         }
+       
+        
     }
+    const userRegister = async (
+        formData: IFormData,
+        setLoading: React.Dispatch<React.SetStateAction<boolean>>
+      ) => {
+        try {
+          setLoading(true);
+          await api.post<IUserRegisterResponse>("/users", formData);
+          toast.success("Cadastro efetuado com sucesso", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+          navigation("/login");
+        } catch (error) {
+          console.log(error);
+          toast.error("Algo deu errado, tente novamente", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+        window.location.reload()
+        } 
+      };
 
     return (
-        <UserContext.Provider value={{ user, setUser, login, navigation }}>
+        <UserContext.Provider value={{ user, setUser, login, navigation, userRegister }}>
             {children}
         </UserContext.Provider>
     )
 }
+
