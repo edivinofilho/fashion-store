@@ -8,7 +8,7 @@ export const StyledTopSectionContainer =styled.div`
   align-items: center;
   max-width: 1440px;
 
-  padding: 0 35px;
+  padding: 0 50px 0 20px;
   margin-bottom: 30px;
   
   button {

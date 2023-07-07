@@ -25,5 +25,11 @@ export const StyledAddNewProductForm = styled.form`
     img {
       width: 1.0625rem;
     }
+
+    @media (max-width: 321px){
+      right: 10px;
+      width: 90%;
+    }
+
   }
 `

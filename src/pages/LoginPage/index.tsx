@@ -42,7 +42,3 @@ export const LoginPage = () => {
     </>
   )
 }
-
-function register(arg0: string): import("react/jsx-runtime").JSX.IntrinsicAttributes & IInputProps & import("react").RefAttributes<HTMLInputElement> {
-  throw new Error("Function not implemented.");
-}

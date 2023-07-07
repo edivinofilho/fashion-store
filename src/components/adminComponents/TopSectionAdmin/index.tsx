@@ -1,8 +1,8 @@
-import { StyledTopSectionAdmin } from "./styles";
+import { StyledTopSectionAdmin } from "./styles"
 
 interface ITopSectionAdmin {
-  title: string;
-  message: string;
+  title: string
+  message: string
 }
 
 export const TopSectionAdmin = ({title, message}:ITopSectionAdmin) => {
