@@ -1,35 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import imgCover from '../../assets/Rectangle 2.png';
-import { Input } from '../../components/Input';
-import { ButtonStyled } from "../../styles/Button";
 import { HeaderDefault } from '../../components/Header/index.tsx';
+import { RegisterForm } from "../../components/RegisterForm";
 import { FooterDefault } from "../../components/Footer";
-import { letterTitle1 } from "../../styles/globalStyle.ts";
-import { RegisterContainer, RegisterContent, ImageContainer, FormContainer, StyledForm } from './style';
+import imgCover from '../../assets/Rectangle 2.png';
+import vector from '../../assets/Vector.png';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
+import { RegisterContainer,ImageContainer,FormContainer, TextRegister,TextWelcome,ImgVector, RegisterContent } from './style';
 
-
-const cadastrarUsuario = async (nome: string, email: string, senha: string) => {
-  try {
-    const response = await fetch('https://fashion-store-api.onrender.com/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: nome, email, password: senha }),
-    });
-
-    if (response.ok) {
-      console.log('Usuário cadastrado com sucesso.');
-    } else {
-      const responseData = await response.json();
-      console.error('Erro ao cadastrar usuário:', responseData);
-    }
-  } catch (error) {
-    console.error('Erro ao cadastrar usuário:', error);
-  }
-};
 
 export const RegisterPage = () => {
   const [nome, setNome] = useState('');
@@ -59,71 +37,33 @@ export const RegisterPage = () => {
     setMensagem('Cadastro realizado com sucesso.');
   };
   return (
-    <>
+    
+      <div>
       <HeaderDefault onlyBrand={true} />
-  
-    <main>  <RegisterContainer>
-        <ImageContainer>
+      <RegisterContainer>
+        
+      <ImageContainer>
           <img src={imgCover} alt="Imagem de capa" />
         </ImageContainer>
+        <FormContainer>
         <RegisterContent>
-  
-          <FormContainer>
 
-            <StyledForm onSubmit={handleCadastro}>
-            <Link to="/">Voltar</Link>
+        <ImgVector src={vector} alt="Imagem de vector" />
+       
+        <Link className='back' to="/"><TextWelcome>Voltar</TextWelcome></Link>
+        </RegisterContent>
 
-<h1>CADASTRAR-SE</h1>
-  <h5>Seja bem-vindo administrador!</h5>
-            <div className="form-group">
-              <label htmlFor="nome"></label>
-              <Input
-                id="nome"
-                type="text"
-                placeholder="NOME"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email"></label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="E-MAIL"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="SENHA"></label>
-              <Input
-                id="senha"
-                type="password"
-                placeholder="SENHA"
-                value={senha}
-                onChange={(e) => setSenha(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="confirmacaoSenha"></label>
-              <Input
-                id="confirmacaoSenha"
-                type="password"
-                placeholder="CONFIRMAR SENHA"
-                value={confirmacaoSenha}
-                onChange={(e) => setConfirmacaoSenha(e.target.value)}
-              />
-            </div>
-            <ButtonStyled styleTypeButton="black">CADASTRAR-SE</ButtonStyled>
-            </StyledForm>
-          {mensagem && <p>{mensagem}</p>}
+        <TextRegister>CADASTRAR-SE</TextRegister>
+  <TextWelcome>Seja bem-vindo administrador!</TextWelcome>
+        <RegisterForm />
         </FormContainer>
-      </RegisterContent>
-    </RegisterContainer>
 
-    </main>
+        </RegisterContainer>
+        <FooterDefault />
 
-    <FooterDefault />
-  </>
-);}
+      </div>
+
+   
+    
+  );
+};

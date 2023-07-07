@@ -1,7 +1,7 @@
 import { styled, css } from "styled-components"
 
 interface IStyledButtonProps {
-    styleTypeButton: "white" | "black";
+    styleTypeButton: "white" | "black" | "back" ;
 }
 
 export const ButtonStyled = styled.button<IStyledButtonProps>`
@@ -35,6 +35,17 @@ export const ButtonStyled = styled.button<IStyledButtonProps>`
                         border: 1px solid grey;
                     }
                 `
+                 case "back":
+                    return css`
+                        background-color: ${({theme}) => theme.colors.black};
+                        color: ${({theme}) => theme.colors.white};
+                        border: 1px solid ${({theme}) => theme.colors.white};
+                        align-self:end;
+                        width: 209px;
+                        height: 60px;
+
+
+                    `
         }
     }}
 `

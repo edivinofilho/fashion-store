@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { letterTitle2,letterParagraph } from "../../styles/globalStyle.ts"
+
 
 export const RegisterContainer = styled.div`
   width: 100vw;
@@ -10,13 +12,15 @@ export const RegisterContainer = styled.div`
 
 export const RegisterContent = styled.div`
   width: 568px;
-  height: 669px;
-  top: 14rem;
-  left: 102rem;
+  
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 20px;
+  .back {
+  text-decoration:none;
+  color:black;
+
+ }
 `;
 
 export const ImageContainer = styled.div`
@@ -40,11 +44,25 @@ export const StyledForm = styled.form`
 display:flex;
 flex-direction: column;
  width: 568px;
-  height: 669px;
-  top: 146px;
-  left: 1020px;
-  display: flex;
+  height: 469px;
  
   gap: 20px;
 `;
 
+export const TextRegister = styled.h1`
+${letterTitle2}
+`
+
+
+
+
+  export const TextWelcome = styled.h5`
+ ${letterParagraph};
+ 
+`
+
+export const ImgVector = styled.img`
+width:16px;
+height:16px;
+display:inline;
+`
