@@ -16,7 +16,6 @@ export const StyledProductList = styled.ul<IStyledProductList>`
         return css`
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-between;
                     align-items: start;
                     height:auto;
                     width: 100%;

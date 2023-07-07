@@ -4,6 +4,8 @@ import { ProductContext } from "../../providers/ProductsContext/ProductsContex.t
 import { UlStyled } from "./styles.ts";
 import { IProduct } from "../../providers/ProductsContext/@types.ts";
 import image from "../../assets/buttonRemove.svg"
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const ModalCart = () => {
@@ -17,6 +19,16 @@ export const ModalCart = () => {
       const newList: IProduct[] = listCart.filter((product) => product.id != id)
       localStorage.setItem('@cartFashionStore', JSON.stringify(newList))
       setlistCart(newList)
+      toast.error('Produto Removido!', {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }
 

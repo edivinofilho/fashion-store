@@ -8,6 +8,8 @@ import cart from "../../assets/cartPlus.svg"
 import { StyledProductList } from "../../styles/UlStyled.ts";
 import { ProductItem } from "../../components/ProductItem/index.tsx";
 import { ModalCart } from "../../components/shoppCart/index.tsx";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const ProductsPage = () => {
   const { productList, currentProduct, isModal, setlistCart, listCart } = useContext(ProductContext)
@@ -24,8 +26,28 @@ export const ProductsPage = () => {
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
             localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+            toast.success('Produto Adicionado!', {
+              position: "top-left",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           } else {
             localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+            toast.success('Produto Adicionado!', {
+              position: "top-left",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           }
         }
       }
@@ -59,6 +81,7 @@ export const ProductsPage = () => {
       </main>
       {isModal ? <ModalCart /> : null}
       <FooterDefault />
+      <ToastContainer/>
     </ConteinerTopStyled>
   )
 }
