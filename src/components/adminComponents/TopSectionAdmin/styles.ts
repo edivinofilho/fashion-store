@@ -5,7 +5,7 @@ export const StyledTopSectionAdmin = styled.section`
   width: 100%;
   min-height: 2rem;
   padding-bottom: 1.25rem;
- 
+
   h2 {
     ${letterTitle2};
     margin-bottom: .4rem;

@@ -4,7 +4,6 @@ export const StyledTopSectionContainer =styled.div`
   width: 100%;
   height: auto;
   max-width: 1440px;
-  margin-left: 1.8rem;
   margin-bottom: 1rem;
  
   display: flex;
