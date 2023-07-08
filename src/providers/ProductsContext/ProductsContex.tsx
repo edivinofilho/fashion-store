@@ -25,7 +25,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
   useEffect(() => {       
     const loadProducts = async () => {
       try {
-        const { data } = await api.get('/products')
+        const { data } = await api.get("/products")
 
         setProductList(data)
 

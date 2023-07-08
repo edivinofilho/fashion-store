@@ -28,7 +28,7 @@ export const ModalCart = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-      });
+      })
     }
   }
 

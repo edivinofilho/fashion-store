@@ -1,7 +1,7 @@
 import { styled, css } from "styled-components"
 
 interface IStyledButtonProps {
-    styleTypeButton: "white" | "black";
+    styleTypeButton: "white" | "black"
 }
 
 export const ButtonStyled = styled.button<IStyledButtonProps>`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 import { letterTitle2, letterParagraph, imgCover } from "../../styles/globalStyle.ts"
 
 

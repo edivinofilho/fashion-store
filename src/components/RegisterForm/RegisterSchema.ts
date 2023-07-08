@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod"
 
 export const registerSchema = z
   .object({
@@ -18,4 +18,4 @@ export const registerSchema = z
   .refine(({ password, confirmPassword }) => confirmPassword === password, {
     message: "As senhas devem ser iguais",
     path: ["confirmPassword"],
-  });
+  })

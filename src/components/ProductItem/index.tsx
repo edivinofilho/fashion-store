@@ -9,7 +9,7 @@ import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 interface IProductList {
-  item: IProduct;
+  item: IProduct
 }
 
 export const ProductItem = ({ item }: IProductList) => {
@@ -26,7 +26,7 @@ export const ProductItem = ({ item }: IProductList) => {
       draggable: true,
       progress: undefined,
       theme: "light",
-    });
+    })
   }
 
   const addCart = () => {

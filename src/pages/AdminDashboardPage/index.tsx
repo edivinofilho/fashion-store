@@ -11,7 +11,9 @@ import { FooterStyled } from "../../components/Footer/styles"
 import { ButtonStyled } from "../../styles/Button"
 import { StyledTopSectionContainer } from "./styles"
 import { StyledProductList } from "../../styles/UlStyled"
-
+import plusImg from "../../src/assets/plusSign.svg"
+import ediButtonImg from "../../src/assets/editButton.svg"
+import deleteImg from "../../src/assets/deleteButton.svg"
 
 export const AdminDashboardPage = () => {
   
@@ -29,7 +31,7 @@ export const AdminDashboardPage = () => {
       <StyledTopSectionContainer>
         <TopSectionAdmin title="PRODUTOS" message="Gerencie os produtos do catálogo"/>
         <ButtonStyled styleTypeButton="black" 
-        onClick={() => setIsModalNewProductsOpen(true)}> {<img src="../../src/assets/plusSign.svg" alt="Sinal de adição"/>} NOVO PRODUTO</ButtonStyled>
+        onClick={() => setIsModalNewProductsOpen(true)}> {<img src={plusImg} alt="Sinal de adição"/>} NOVO PRODUTO</ButtonStyled>
       </StyledTopSectionContainer>
     
       <main>
@@ -48,11 +50,11 @@ export const AdminDashboardPage = () => {
                 setSelectedProduct(product)
                 setisModalEditProduct(true)
               
-                }}>{<img src="../../src/assets/editButton.svg"  alt="Botão para editar produto" className="buttonIcon"/>}</button>
+                }}>{<img src={ediButtonImg} className="buttonIcon"/>}</button>
 
               <button onClick={() =>
                 removeProduct(product.id)
-                }>{<img src="../../src/assets/deleteButton.svg"  alt="Botão para remover produto" className="buttonIcon"/>}</button>
+                }>{<img src={deleteImg}  alt="Botão para remover produto" className="buttonIcon"/>}</button>
             </div>
           </li>
         )) : null}

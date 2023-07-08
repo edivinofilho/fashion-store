@@ -1,18 +1,18 @@
 import { FooterDefault } from "../../components/Footer/index.tsx"
 import { HeaderDefault } from "../../components/Header/index.tsx"
-import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx";
+import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx"
 import { MainStyled, ProductMainStyled } from "./style.ts"
-import { useContext, useEffect } from 'react';
-import { IProduct } from "../../providers/ProductsContext/@types.ts";
+import { useContext, useEffect } from "react"
+import { IProduct } from "../../providers/ProductsContext/@types.ts"
 import cart from "../../assets/cartPlus.svg"
-import { StyledProductList } from "../../styles/UlStyled.ts";
-import { ProductItem } from "../../components/ProductItem/index.tsx";
-import { ModalCart } from "../../components/shoppCart/index.tsx";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { api } from "../../services/api.ts";
-import { ButtonStyled } from "../../styles/Button.ts";
+import { StyledProductList } from "../../styles/UlStyled.ts"
+import { ProductItem } from "../../components/ProductItem/index.tsx"
+import { ModalCart } from "../../components/shoppCart/index.tsx"
+import "react-toastify/dist/ReactToastify.css"
+import { ToastContainer, toast } from "react-toastify"
+import { useNavigate, useParams, Link } from "react-router-dom"
+import { api } from "../../services/api.ts"
+import { ButtonStyled } from "../../styles/Button.ts"
 
 export const ProductsPage = () => {
 
@@ -41,7 +41,7 @@ export const ProductsPage = () => {
 
 
   const Toasty = () => {
-    toast.success('Produto Adicionado!', {
+    toast.success("Produto Adicionado!", {
       position: "top-left",
       autoClose: 3000,
       hideProgressBar: false,
@@ -50,11 +50,11 @@ export const ProductsPage = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-    });
+    })
   }
 
   const addCart = () => {
-    const storage = localStorage.getItem('@cartFashionStore')
+    const storage = localStorage.getItem("@cartFashionStore")
     if (storage != null) {
       const newList: IProduct[] = JSON.parse(storage)
       if (currentProduct !== null) {
@@ -63,15 +63,15 @@ export const ProductsPage = () => {
           Toasty()
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
-            localStorage.setItem('@cartFashionStore', JSON.stringify(list))
+            localStorage.setItem("@cartFashionStore", JSON.stringify(list))
           } else {
-            localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+            localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
           }
         }
       }
     } else {
       Toasty()
-      localStorage.setItem('@cartFashionStore', JSON.stringify([currentProduct]))
+      localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
     }
   }
 
@@ -85,7 +85,7 @@ export const ProductsPage = () => {
             <img className="ProductMain" src={currentProduct?.image} />
             <div>
               <h4>{currentProduct?.name}</h4>
-              <span>{currentProduct?.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</span>
+              <span>{currentProduct?.price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}</span>
               <p>{currentProduct?.description}</p>
               <ButtonStyled styleTypeButton="black" onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</ButtonStyled>
             </div>
