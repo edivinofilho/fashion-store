@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../components/Input"
 import { HeaderDefault } from "../../components/Header/index.tsx"
