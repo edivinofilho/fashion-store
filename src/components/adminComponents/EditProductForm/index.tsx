@@ -8,7 +8,7 @@ import { IProduct } from "../../../providers/ProductsContext/@types"
 import { StyledAddNewProductForm } from "../AddNewProductForm/styles"
 import { ButtonStyled } from "../../../styles/Button"
 import { TextArea } from "../TextArea"
-import editImg from "../../../src/assets/editSign.png"
+import editImg from "../../src/assets/editSign.png"
 
 
 interface IEditProductFormProps {
