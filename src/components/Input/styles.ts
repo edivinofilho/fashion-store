@@ -2,19 +2,19 @@ import { styled } from "styled-components"
 import { letterPriceSmall } from "../../styles/globalStyle"
 
 export const InputStyled = styled.input`
-    background-color: grey;
-    color: grey;
+    background-color: #EEEEEE;
+    color: #EEEEEE;
     padding: 15px;
     width: 100%;
     height: 78px;
-    border: 1px solid grey;
+    border: 1px solid #EEEEEE;
 
     &::placeholder{
-        color: grey;
+        color: #EEEEEE;
     }
 
      &:hover, &:focus{
-        border: 1px solid grey;
+        border: 1px solid #EEEEEE;
         outline: none;
     }
 `

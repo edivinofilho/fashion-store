@@ -18,9 +18,9 @@ export const ButtonStyled = styled.button<IStyledButtonProps>`
                     border: 1px solid #000000;
 
                     &:hover{
-                        background-color: grey;
+                        background-color: #EEEEEE;
                         color: #FFFFFF;
-                        border: 1px solid grey;
+                        border: 1px solid #EEEEEE;
                     }
                 `
             case "black":
@@ -30,9 +30,9 @@ export const ButtonStyled = styled.button<IStyledButtonProps>`
                     border: 1px solid #FFFFFF;
 
                     &:hover{
-                        background-color: grey;
+                        background-color: #EEEEEE;
                         color: #000000;
-                        border: 1px solid grey;
+                        border: 1px solid #EEEEEE;
                     }
                 `
         }
