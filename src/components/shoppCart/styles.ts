@@ -57,7 +57,7 @@ export const UlStyled = styled.ul`
     }
 
     button{
-        /* background-color: ${({ theme }) => theme.colors.white}; */
+        background-color: #FFFFFF;
         width: 10px;
         height: 10px;
         font-size: 50px;

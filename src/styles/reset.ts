@@ -16,13 +16,13 @@ body{
     overflow-x: hidden;
 
     ::-webkit-scrollbar-track {
-    /* background: ${({ theme }) => theme.colors.white};; */
+    background: #FFFFFF;
 }
 ::-webkit-scrollbar {
     width: 5px;
 }
 ::-webkit-scrollbar-thumb {
-    /* background: ${({ theme }) => theme.colors.black}; */
+    background: #000000;
     border-radius: 10px;
 }
 }
@@ -34,7 +34,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* background-color: ${({ theme }) => theme.colors.white}; */
+    background-color: #FFFFFF;
 }
 
 main{
@@ -52,7 +52,7 @@ a {
 button, .button{
     text-decoration: none;
     cursor: pointer;
-    /* color: ${({ theme }) => theme.colors.black}; */
+    color: #000000;
     border-radius: 3px;
 }
 
