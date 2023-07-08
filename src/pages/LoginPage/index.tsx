@@ -8,11 +8,11 @@ import { ButtonStyled } from "../../styles/Button.ts"
 import img from "../../assets/imgCover.svg"
 import { StyledFormLogin, LoginPageTitle, StyleSection } from "./style"
 import { TLoginFormValues, loginFormSchema } from "./LoginSchema"
-import { IFormData, UserContext } from "../../providers/UserContext/UserContext.tsx"
+import { UserContext } from "../../providers/UserContext/UserContext.tsx"
 
 export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<TLoginFormValues>({ resolver: zodResolver(loginFormSchema) })
-  const { login, navigation, AutoLogin } = useContext(UserContext)
+  const { login, navigation } = useContext(UserContext)
 
   const registerPage = () => {
 
