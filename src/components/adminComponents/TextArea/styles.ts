@@ -3,7 +3,7 @@ import { letterMenu, letterPriceSmall } from "../../../styles/globalStyle"
 
 export const StyledTextArea = styled.textarea`
     background-color: #EEEEEE;
-    color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.5);
     padding: 15px;
     width: 100%;
     height: 78px;

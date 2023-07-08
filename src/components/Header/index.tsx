@@ -15,7 +15,7 @@ export const HeaderDefault = ({ onlyBrand }: IProps) => {
 
 
     const openCart = () => {
-        const storage = localStorage.getItem('@cartFashionStore')
+        const storage = localStorage.getItem("@cartFashionStore")
         if (storage != null) {
             const newList: IProduct[] = JSON.parse(storage)
             if (newList != null) {

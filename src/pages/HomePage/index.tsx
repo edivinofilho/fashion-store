@@ -7,7 +7,7 @@ import { FooterDefault } from "../../components/Footer/index.tsx"
 import imgCover from "../../assets/imgCover.svg"
 import { MainStyled } from "./styles.ts"
 import { ModalCart } from "../../components/shoppCart/index.tsx"
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify"
 import { ButtonStyled } from "../../styles/Button.ts"
 
 export const HomePage = () => {
@@ -19,7 +19,7 @@ export const HomePage = () => {
       <HeaderDefault onlyBrand={false} />
       <MainStyled>
         <div className="containerHome">
-          <img className="imgCover" src={imgCover} alt='' />
+          <img className="imgCover" src={imgCover} alt="imagem de display de produtos" />
           <div>
             <h1 className="title">KENZIE<br />FASHION<br />STORE</h1>
             <ButtonStyled styleTypeButton="black" >CONFIRA AS OFERTAS</ButtonStyled>
