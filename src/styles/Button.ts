@@ -1,7 +1,7 @@
 import { styled, css } from "styled-components"
 
 interface IStyledButtonProps {
-    styleTypeButton: "white" | "black" | "back" ;
+    styleTypeButton: "white" | "black";
 }
 
 export const ButtonStyled = styled.button<IStyledButtonProps>`
@@ -13,25 +13,25 @@ export const ButtonStyled = styled.button<IStyledButtonProps>`
         switch (styleTypeButton) {
             case "white":
                 return css`
-                    /* background-color: ${({ theme }) => theme.colors.white};
-                    color: ${({ theme }) => theme.colors.black};
-                    border: 1px solid ${({ theme }) => theme.colors.black}; */
+                    background-color: #FFFFFF;
+                    color: #000000;
+                    border: 1px solid #000000;
 
                     &:hover{
                         background-color: grey;
-                        /* color: ${({ theme }) => theme.colors.white}; */
+                        color: #FFFFFF;
                         border: 1px solid grey;
                     }
                 `
             case "black":
                 return css`
-                    /* background-color: ${({ theme }) => theme.colors.black}; */
-                    /* color: ${({ theme }) => theme.colors.white}; */
-                    /* border: 1px solid ${({ theme }) => theme.colors.white}; */
+                    background-color: #000000;
+                    color: #FFFFFF;
+                    border: 1px solid #FFFFFF;
 
                     &:hover{
                         background-color: grey;
-                        /* color: ${({ theme }) => theme.colors.black}; */
+                        color: #000000;
                         border: 1px solid grey;
                     }
                 `
