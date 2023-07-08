@@ -15,7 +15,7 @@ export const StyledTextArea = styled.textarea`
     font-size: 14px;
 
     &::placeholder{
-        color: #EEEEEE;
+        color:rgba(0, 0, 0, 0.5);
     }
 
      &:hover, &:focus{

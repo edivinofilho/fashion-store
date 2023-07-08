@@ -9,7 +9,7 @@ export const InputStyled = styled.input`
     border: #EEEEEE;
 
     &::placeholder{
-        color: #EEEEEE;
+        color: rgba(0, 0, 0, 0.5);
     }
 
      &:hover, &:focus{
