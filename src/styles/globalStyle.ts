@@ -2,7 +2,6 @@ import { createGlobalStyle, css } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
 :root{
-
     //TITLE 1
     --fontTitle1: "Oswald", sans-serif;
 

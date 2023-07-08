@@ -1,7 +1,6 @@
 import { styled } from "styled-components"
 import { letterTitle2, imgCover } from "../../styles/globalStyle.ts"
 
-
 export const StyledFormLogin = styled.form`
     width: 100%;
     max-width: 700px;

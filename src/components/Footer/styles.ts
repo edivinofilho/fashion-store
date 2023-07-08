@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { letterParagraph } from "../../styles/globalStyle.ts";
 
-
 export const FooterStyled = styled.footer`
     align-self: flex-end;
     width: 100%;

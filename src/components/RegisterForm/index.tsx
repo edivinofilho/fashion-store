@@ -7,7 +7,6 @@ import { registerSchema } from "./RegisterSchema"
 import { ButtonStyled } from "../../styles/Button"
 import { StyledForm } from "../../pages/RegisterPage/style"
 
-
 export interface IResgisterFormData {
   email: string
   password: string
@@ -43,7 +42,6 @@ export const RegisterForm = () => {
         />
 
         <Input
-         
           type="text"
           id="email"
           placeholder="E-MAIL"
@@ -53,7 +51,6 @@ export const RegisterForm = () => {
         />
 
         <Input
-          
           type="password"
           id="password"
           placeholder="SENHA"
@@ -70,11 +67,7 @@ export const RegisterForm = () => {
           disabled={loading}
           {...register("confirmPassword")}
         />
-
-        <ButtonStyled styleTypeButton="black"
-          type="submit"
-        >CADASTRAR-SE
-        </ButtonStyled>
+        <ButtonStyled styleTypeButton="black" type="submit">CADASTRAR-SE</ButtonStyled>
       </StyledForm>
     </>
   )

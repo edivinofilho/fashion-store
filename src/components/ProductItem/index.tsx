@@ -5,8 +5,6 @@ import { useContext } from "react"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx"
 import { Link } from "react-router-dom"
 import { ButtonStyled } from "../../styles/Button.ts"
-import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
 
 interface IProductList {
   item: IProduct
@@ -14,20 +12,7 @@ interface IProductList {
 
 export const ProductItem = ({ item }: IProductList) => {
 
-  const { setCurrentProduct } = useContext(ProductContext)
-
-  const Toasty = () => {
-    toast.success("Produto Adicionado!", {
-      position: "top-left",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
-  }
+  const { setCurrentProduct, Toasty } = useContext(ProductContext)
 
   const addCart = () => {
     const storage = localStorage.getItem("@cartFashionStore")
@@ -35,16 +20,18 @@ export const ProductItem = ({ item }: IProductList) => {
       const newList: IProduct[] = JSON.parse(storage)
       const limiter = newList?.find((element) => element.id == item.id)
       if (limiter == undefined) {
-        Toasty()
+        Toasty("Produto Adicionado!", "sucess")
         if (newList != null && item != null) {
           const list: IProduct[] = [...newList, item]
           localStorage.setItem("@cartFashionStore", JSON.stringify(list))
         } else if (item != null) {
           localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
         }
+      } else {
+        Toasty("Produto já esta no carrinho!", "error")
       }
     } else {
-      Toasty()
+      Toasty("Produto Adicionado!", "sucess")
       localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
     }
   }

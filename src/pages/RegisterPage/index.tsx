@@ -9,7 +9,6 @@ import { RegisterContainer, ImageCover, FormContainer, TextRegister, TextWelcome
 
 export const RegisterPage = () => {
   return (
-
     <>
       <HeaderDefault onlyBrand={true} />
       <RegisterContainer>

@@ -14,7 +14,7 @@ export interface IProduct {
 }
 
 export interface IRemoveProduct {
-  removeProduct: (itemId: number)=> void
+  removeProduct: (itemId: number) => void
 }
 
 export interface IProductContextValue {
@@ -32,4 +32,5 @@ export interface IProductContextValue {
   currentProduct: IProduct | null,
   setCurrentProduct: React.Dispatch<React.SetStateAction<IProduct | null>>,
   setlistCart: React.Dispatch<React.SetStateAction<IProduct[] | null>>,
+  Toasty: (text: string, type: "sucess" | "error") => void,
 }

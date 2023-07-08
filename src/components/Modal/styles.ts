@@ -5,19 +5,15 @@ interface IStyledModalBox {
   stylesModal?: "shoppingCart" | "adminModal"
 }
 
-
 export const StyledModalOverlay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
   position: fixed;
-
   inset: 0;
-
   width: 100%;
   height: 100vh;
-
   background: rgba(0, 0, 0, 0.2);
 `
 
@@ -87,7 +83,6 @@ export const StyledModalBox = styled.div<IStyledModalBox>`
               font-size: 35px;
               cursor: pointer;
               margin-right:1.25rem;
-
               background-color: transparent;
             }
           }

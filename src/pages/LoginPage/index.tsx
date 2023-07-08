@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../components/Input"
 import { HeaderDefault } from "../../components/Header/index.tsx"
@@ -8,19 +8,34 @@ import { ButtonStyled } from "../../styles/Button.ts"
 import img from "../../assets/imgCover.svg"
 import { StyledFormLogin, LoginPageTitle, StyleSection } from "./style"
 import { TLoginFormValues, loginFormSchema } from "./LoginSchema"
-import { UserContext } from "../../providers/UserContext/UserContext.tsx"
-
+import { IFormData, UserContext } from "../../providers/UserContext/UserContext.tsx"
+/* import { useNavigate } from "react-router-dom" */
 
 export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<TLoginFormValues>({ resolver: zodResolver(loginFormSchema) })
-  const { login, navigation } = useContext(UserContext)
-
+  const { login, navigation, AutoLogin } = useContext(UserContext)
+  /* const nav = useNavigate() */
 
   const registerPage = () => {
 
     navigation("/register")
   }
 
+/*   useEffect(() => {
+    const storage = localStorage.getItem("@User")
+    if (storage != null) {
+      const STORAGE = JSON.parse(storage)
+      const data: IFormData = {
+        email: STORAGE.email,
+        password: STORAGE.confirmPassword
+      }
+      AutoLogin(data)
+      nav("/admin_welcome")
+    } else {
+      nav("/admin_welcome")
+    }
+  }, [])
+ */
   return (
     <>
       <HeaderDefault onlyBrand={true} />

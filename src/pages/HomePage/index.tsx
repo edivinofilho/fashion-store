@@ -7,7 +7,6 @@ import { FooterDefault } from "../../components/Footer/index.tsx"
 import imgCover from "../../assets/imgCover.svg"
 import { MainStyled } from "./styles.ts"
 import { ModalCart } from "../../components/shoppCart/index.tsx"
-import { ToastContainer } from "react-toastify"
 import { ButtonStyled } from "../../styles/Button.ts"
 
 export const HomePage = () => {
@@ -31,7 +30,6 @@ export const HomePage = () => {
         </StyledProductList>
         {isModal ? <ModalCart /> : null}
       </MainStyled>
-      <ToastContainer />
       <FooterDefault />
     </>
   )

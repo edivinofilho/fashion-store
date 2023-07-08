@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { letterPriceSmall, letterTitle4 } from "../../styles/globalStyle.ts";
 
-
 export const UlStyled = styled.ul`
     width: 100%;
     height: 100%;

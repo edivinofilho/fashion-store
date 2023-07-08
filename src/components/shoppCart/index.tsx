@@ -7,28 +7,18 @@ import image from "../../assets/buttonRemove.svg"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-
 export const ModalCart = () => {
 
-  const { setisModal, listCart, setlistCart } = useContext(ProductContext)
+  const { setisModal, listCart, setlistCart, Toasty } = useContext(ProductContext)
 
   const value: number | undefined = listCart?.reduce((acc, item) => acc + item.price, 0)
 
   const removeItemCart = (id: number) => {
-    if(listCart != null){
+    if (listCart != null) {
       const newList: IProduct[] = listCart.filter((product) => product.id != id)
       localStorage.setItem("@cartFashionStore", JSON.stringify(newList))
       setlistCart(newList)
-      toast.error("Produto Removido!", {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })
+      Toasty("Produto Removido!", "error")
     }
   }
 

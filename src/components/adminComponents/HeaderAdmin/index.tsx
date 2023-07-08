@@ -3,11 +3,11 @@ interface IHeader {
   message: string
 }
 
-export const Header = ({title, message}:IHeader) => {
+export const Header = ({ title, message }: IHeader) => {
   return (
     <header>
-        <h2>{title}</h2>
-        <p>{message}</p>
+      <h2>{title}</h2>
+      <p>{message}</p>
     </header>
   )
 }

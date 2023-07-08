@@ -16,15 +16,17 @@ body{
     overflow-x: hidden;
 
     ::-webkit-scrollbar-track {
-    background: #FFFFFF;
-}
-::-webkit-scrollbar {
-    width: 5px;
-}
-::-webkit-scrollbar-thumb {
-    background: #000000;
-    border-radius: 10px;
-}
+        background: #FFFFFF;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #000000;
+        border-radius: 10px;
+    }
 }
 
 #root{
@@ -47,7 +49,7 @@ main{
 
 a {
     text-decoration: none;
-  }
+}
 
 button, .button{
     text-decoration: none;
@@ -55,5 +57,4 @@ button, .button{
     color: #000000;
     border-radius: 3px;
 }
-
 `

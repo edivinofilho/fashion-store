@@ -8,15 +8,13 @@ import cart from "../../assets/cartPlus.svg"
 import { StyledProductList } from "../../styles/UlStyled.ts"
 import { ProductItem } from "../../components/ProductItem/index.tsx"
 import { ModalCart } from "../../components/shoppCart/index.tsx"
-import "react-toastify/dist/ReactToastify.css"
-import { ToastContainer, toast } from "react-toastify"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { api } from "../../services/api.ts"
 import { ButtonStyled } from "../../styles/Button.ts"
 
 export const ProductsPage = () => {
 
-  const { productList, currentProduct, isModal, setCurrentProduct } = useContext(ProductContext)
+  const { productList, currentProduct, isModal, setCurrentProduct, Toasty } = useContext(ProductContext)
 
   const navigate = useNavigate()
 
@@ -39,20 +37,6 @@ export const ProductsPage = () => {
 
   const filterProductList = productList?.filter(product => product.id !== currentProduct?.id)
 
-
-  const Toasty = () => {
-    toast.success("Produto Adicionado!", {
-      position: "top-left",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
-  }
-
   const addCart = () => {
     const storage = localStorage.getItem("@cartFashionStore")
     if (storage != null) {
@@ -60,17 +44,19 @@ export const ProductsPage = () => {
       if (currentProduct !== null) {
         const limiter = newList?.find((element) => element.id === currentProduct.id)
         if (limiter == undefined) {
-          Toasty()
+          Toasty("Produto Adicionado!", "sucess")
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
             localStorage.setItem("@cartFashionStore", JSON.stringify(list))
           } else {
             localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
           }
+        } else {
+          Toasty("Produto já esta no carrinho!", "error")
         }
       }
     } else {
-      Toasty()
+      Toasty("Produto Adicionado!", "sucess")
       localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
     }
   }
@@ -87,7 +73,7 @@ export const ProductsPage = () => {
               <h4>{currentProduct?.name}</h4>
               <span>{currentProduct?.price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}</span>
               <p>{currentProduct?.description}</p>
-              <ButtonStyled styleTypeButton="black" onClick={addCart}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</ButtonStyled>
+              <ButtonStyled styleTypeButton="black" onClick={() => { addCart() }}> <img src={cart} alt="Carrinho" /> Adicionar Ao carrinho</ButtonStyled>
             </div>
           </div>
         </ProductMainStyled>
@@ -100,7 +86,6 @@ export const ProductsPage = () => {
       </MainStyled>
       {isModal ? <ModalCart /> : null}
       <FooterDefault />
-      <ToastContainer />
     </>
   )
 }
