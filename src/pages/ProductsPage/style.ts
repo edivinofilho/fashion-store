@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { letterTitle2, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3, letterPriceSmallBold } from "../../styles/globalStyle";
+import { styled } from "styled-components"
+import { letterTitle2, letterPriceSmall, letterParagraph, letterPriceBig, letterTitle3, letterPriceSmallBold } from "../../styles/globalStyle"
 
 export const MainStyled = styled.main`
     h2{
@@ -9,22 +9,22 @@ export const MainStyled = styled.main`
 `
 
 export const ProductMainStyled = styled.div`
-width: 100%;
-height: auto;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 35px;
-padding-bottom: 30px; 
-margin-bottom: 170px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+  padding-bottom: 30px; 
+  margin-bottom: 170px;
 
-@media(max-width:800px){
-    margin-bottom: 25px;
+  @media(max-width:800px){
+      margin-bottom: 25px;
 
-    .ProductContainer{
-        flex-direction: column;
-        align-items: center;
-    }
+      .ProductContainer{
+          flex-direction: column;
+          align-items: center;
+      }
 }
 
 .button{

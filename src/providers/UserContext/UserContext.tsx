@@ -1,5 +1,5 @@
-import { createContext, useState } from "react"
-import { NavigateFunction, useNavigate } from "react-router-dom"
+import { createContext, useEffect, useState } from "react"
+import { Navigate, NavigateFunction, useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -39,7 +39,6 @@ interface IUserContext {
   ) => Promise<void>
   navigation: NavigateFunction
   logout: () => void
-  AutoLogin: (formData: IFormData) => Promise<void>
 }
 
 interface IUserRegisterResponse {
@@ -52,19 +51,6 @@ export const UserContext = createContext({} as IUserContext)
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null)
   const navigation = useNavigate()
-
-
-  const AutoLogin = async (formData: IFormData) => {
-
-    try {
-      const { data } = await api.post("/login", formData)
-      setUser(data)
-    } catch (error: any) {
-      if (error.response.data == "Cannot find user") {
-        setUser(null)
-      }
-    }
-  }
 
   const login: SubmitHandler<IFormData> = async (formData: IFormData) => {
 
@@ -164,7 +150,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   }
 
   return (
-    <UserContext.Provider value={{ AutoLogin, user, setUser, login, navigation, userRegister, logout }}>
+    <UserContext.Provider value={{ user, setUser, login, navigation, userRegister, logout }}>
       {children}
     </UserContext.Provider>
   )
