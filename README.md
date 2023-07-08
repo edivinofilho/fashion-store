@@ -33,4 +33,6 @@ A função desta aplicação é permitir que o usuário navegue pelos produtos r
 Este projeto está licenciado sob a Kenzie Academy Brasil. 
 
 ***Contato***
-Para entrar em contato, envie um e-mail para edivinofilho@hotmail.com.
+Para entrar em contato, envie um e-mail para:
+- edivinofilho@hotmail.com
+- guilhermebugs2001@gmail.com
