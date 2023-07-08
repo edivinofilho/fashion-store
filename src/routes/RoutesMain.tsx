@@ -15,10 +15,10 @@ export const RoutesMain = () => {
       <Route path="/product" element={<ProductsPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/admin_dashboard" element={<ProtectorRoutes Invert={false} />} >
+      <Route path="/admin_dashboard" element={<ProtectorRoutes />} >
         <Route index element={<AdminDashboardPage />} />
       </Route>
-      <Route path="/admin_welcome" element={<ProtectorRoutes Invert={false} />} >
+      <Route path="/admin_welcome" element={<ProtectorRoutes />} >
         <Route index element={<AdminDashboardWelcomePage />} />
       </Route>
     </Routes>

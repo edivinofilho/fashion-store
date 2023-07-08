@@ -6,11 +6,10 @@ import { TeditProductFormSchema } from "../../components/adminComponents/EditPro
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-
 export const ProductContext = createContext({} as IProductContextValue)
- 
-export const ProductsProvider = ({ children }:IProductProviderProps) => {
-  const [ isModalNewProductOpen, setIsModalNewProductsOpen ] = useState(false)
+
+export const ProductsProvider = ({ children }: IProductProviderProps) => {
+  const [isModalNewProductOpen, setIsModalNewProductsOpen] = useState(false)
 
   const [isModalEditProduct, setisModalEditProduct] = useState(false)
 
@@ -18,27 +17,49 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
 
   const [productList, setProductList] = useState<IProduct[] | null>(null)
 
-  const [ currentProduct, setCurrentProduct ] = useState<IProduct | null>(null)
+  const [currentProduct, setCurrentProduct] = useState<IProduct | null>(null)
 
-  const [ listCart, setlistCart ] = useState<IProduct[] | null>(null)
+  const [listCart, setlistCart] = useState<IProduct[] | null>(null)
 
-  useEffect(() => {       
+  useEffect(() => {
     const loadProducts = async () => {
       try {
-        const { data } = await api.get('/products')
+        const { data } = await api.get("/products")
 
         setProductList(data)
 
       } catch (error) {
-        console.log(error)
-
-      } finally {
-        // setLoading(false)
       }
     }
     loadProducts()
 
   }, [])
+
+  const Toasty = (text: string, type: "sucess" | "error") => {
+    if (type === "sucess") {
+      toast.success(`${text}`, {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+    } else {
+      toast.error(`${text}`, {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+    }
+  }
 
   const removeProduct = async (itemId: number) => {
     const token = localStorage.getItem("@AcessToken")
@@ -64,7 +85,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
           draggable: true,
           progress: undefined,
           theme: "colored",
-      })
+        })
 
       } catch (error) {
 
@@ -78,7 +99,6 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
           progress: undefined,
           theme: "colored",
         })
-        console.log(error)
       }
     }
   }
@@ -109,7 +129,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-    })
+      })
 
     } catch (error) {
       toast.error("Ups, houve um problema, tente novamente", {
@@ -122,14 +142,11 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         progress: undefined,
         theme: "colored",
       })
-
-      console.log(error)
       setIsModalNewProductsOpen(false)
     }
   }
 
   const submitEditProduct = async (formData: TeditProductFormSchema, productId: string) => {
-    console.log(formData)
     const token = localStorage.getItem("@AcessToken")
 
     const price = parseFloat(formData.price)
@@ -161,7 +178,7 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-    })
+      })
 
     } catch (error) {
 
@@ -175,16 +192,14 @@ export const ProductsProvider = ({ children }:IProductProviderProps) => {
         progress: undefined,
         theme: "colored",
       })
-
-      console.log(error)
     }
 
     setisModalEditProduct(false)
   }
 
   return (
-    <ProductContext.Provider value={{ isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct}}>
-      { children }
+    <ProductContext.Provider value={{ Toasty, isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct }}>
+      {children}
     </ProductContext.Provider>
   )
 }

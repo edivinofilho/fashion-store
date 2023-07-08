@@ -8,23 +8,23 @@ export const NavAdminBar = () => {
 
   return (
     <StyledNavAdminBar>
-        <ul>
-          <li>
-            <Link to="/admin_welcome">
-              Início
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin_dashboard">
-              Produtos
-            </Link>
-          </li>
-          <li>
-            <Link to="/" onClick={logout}>
-              Logout
-            </Link>
-          </li>
-        </ul>
-      </StyledNavAdminBar>
+      <ul>
+        <li>
+          <Link to="/admin_welcome">
+            Início
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin_dashboard">
+            Produtos
+          </Link>
+        </li>
+        <li>
+          <Link to="/" onClick={logout}>
+            Logout
+          </Link>
+        </li>
+      </ul>
+    </StyledNavAdminBar>
   )
 }

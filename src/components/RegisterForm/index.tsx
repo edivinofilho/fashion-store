@@ -1,34 +1,33 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Input } from "../Input";
-import { useContext, useState } from "react";
-import { UserContext } from "../../providers/UserContext/UserContext";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema } from "./RegisterSchema";
-import { ButtonStyled } from "../../styles/Button";
-import { StyledForm } from "../../pages/RegisterPage/style";
-
+import { SubmitHandler, useForm } from "react-hook-form"
+import { Input } from "../Input"
+import { useContext, useState } from "react"
+import { UserContext } from "../../providers/UserContext/UserContext"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { registerSchema } from "./RegisterSchema"
+import { ButtonStyled } from "../../styles/Button"
+import { StyledForm } from "../../pages/RegisterPage/style"
 
 export interface IResgisterFormData {
-  email: string;
-  password: string;
-  name: string;
-  confirmPassword: string;
+  email: string
+  password: string
+  name: string
+  confirmPassword: string
 }
 
 export const RegisterForm = () => {
-  const { userRegister } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const { userRegister } = useContext(UserContext)
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IResgisterFormData>({
     resolver: zodResolver(registerSchema),
-  });
+  })
 
   const submit: SubmitHandler<IResgisterFormData> = (formData) => {
-    userRegister(formData, setLoading);
-  };
+    userRegister(formData, setLoading)
+  }
 
   return (
     <>
@@ -43,7 +42,6 @@ export const RegisterForm = () => {
         />
 
         <Input
-         
           type="text"
           id="email"
           placeholder="E-MAIL"
@@ -53,7 +51,6 @@ export const RegisterForm = () => {
         />
 
         <Input
-          
           type="password"
           id="password"
           placeholder="SENHA"
@@ -70,12 +67,8 @@ export const RegisterForm = () => {
           disabled={loading}
           {...register("confirmPassword")}
         />
-
-        <ButtonStyled styleTypeButton="black"
-          type="submit"
-        >CADASTRAR-SE
-        </ButtonStyled>
+        <ButtonStyled styleTypeButton="black" type="submit">CADASTRAR-SE</ButtonStyled>
       </StyledForm>
     </>
-  );
-};
+  )
+}

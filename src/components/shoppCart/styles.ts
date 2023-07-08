@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { letterPriceSmall, letterTitle4 } from "../../styles/globalStyle.ts";
 
-
 export const UlStyled = styled.ul`
     width: 100%;
     height: 100%;
@@ -57,7 +56,7 @@ export const UlStyled = styled.ul`
     }
 
     button{
-        background-color: ${({ theme }) => theme.colors.white};
+        background-color: #FFFFFF;
         width: 10px;
         height: 10px;
         font-size: 50px;

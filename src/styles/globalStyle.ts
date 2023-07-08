@@ -2,9 +2,8 @@ import { createGlobalStyle, css } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
 :root{
-
     //TITLE 1
-    --fontTitle1: 'Oswald', sans-serif;
+    --fontTitle1: "Oswald", sans-serif;
 
     --title1Weight: 500; 
     --title1Size: 6.25rem;
@@ -14,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     --title1MobileLineHeight: 5.5575rem;
 
     //TITLE 2
-    --fontTitle2: 'Oswald', sans-serif;
+    --fontTitle2: "Oswald", sans-serif;
 
     --title2Weight: 500; 
     --title2Size: 3.75rem;
@@ -24,21 +23,21 @@ export const GlobalStyle = createGlobalStyle`
     --title2MobileLineHeight: 4.0756rem;
 
     //TITLE 3
-    --fontTitle3: 'Oswald', sans-serif;
+    --fontTitle3: "Oswald", sans-serif;
 
     --title3Weight: 500; 
     --title3Size: 2rem;
     --title3LineHeight: 2.9638rem;
 
     //TITLE 4
-    --fontTitle4: 'Roboto', sans-serif;
+    --fontTitle4: "Roboto", sans-serif;
     
     --title4Weight: 700; 
     --title4Size: 1.1875rem;
     --title4LineHeight: 1.3919rem;
 
     //PRICE
-    --fontPrice: 'Oswald', sans-serif;
+    --fontPrice: "Oswald", sans-serif;
 
     --smallPriceWeight: 400; 
     --smallPriceSize: 1.125rem;
@@ -57,14 +56,14 @@ export const GlobalStyle = createGlobalStyle`
     --bigPriceBoldLineHeight: 2.9375rem;
 
     //MENU
-    --fontMenu: 'Oswald', sans-serif;
+    --fontMenu: "Oswald", sans-serif;
 
     --menuWeight: 500; 
     --menuSize: 1.25rem;
     --menuLineHeight: 1.8125rem;
 
     //PARAGRAPH
-    --fontParagraph: 'Roboto', sans-serif;
+    --fontParagraph: "Roboto", sans-serif;
 
     --paragraphWeight: 400; 
     --paragraphSize: 1.25rem;

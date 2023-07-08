@@ -1,6 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 import { letterTitle2, letterParagraph, imgCover } from "../../styles/globalStyle.ts"
-
 
 export const RegisterContainer = styled.div`
   width: 100%;
@@ -59,17 +58,17 @@ button{
 `;
 
 export const TextRegister = styled.h1`
-${letterTitle2}
-align-self: flex-start;
+  ${letterTitle2}
+  align-self: flex-start;
 `
 
 export const TextWelcome = styled.h5`
-${letterParagraph};
-align-self: flex-start;
+  ${letterParagraph};
+  align-self: flex-start;
 `
 
 export const ImgVector = styled.img`
-width:16px;
-height:16px;
-display:inline;
+  width:16px;
+  height:16px;
+  display:inline;
 `

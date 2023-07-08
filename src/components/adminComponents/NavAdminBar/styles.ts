@@ -9,7 +9,6 @@ export const StyledNavAdminBar = styled.nav`
   display: flex;
   padding: 0 25px;
   margin: 1.25rem;
-
  
   > ul {
     width: 100%;

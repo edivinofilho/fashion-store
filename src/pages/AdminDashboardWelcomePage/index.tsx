@@ -9,13 +9,11 @@ export const AdminDashboardWelcomePage = () => {
 
   return (
     <>
-      <HeaderDefault onlyBrand={true}/>   
+      <HeaderDefault onlyBrand={true} />
       <NavAdminBar />
       <StyledTopSectionContainer>
-        <TopSectionAdmin title="PAINEL DO ADMINISTRADOR" message={`Seja bem vindo, ${user ? user.name : null || ""}!`}/>
+        <TopSectionAdmin title="PAINEL DO ADMINISTRADOR" message={`Seja bem vindo, ${user ? user.name : null || ""}!`} />
       </StyledTopSectionContainer>
-      
-      
       <FooterStyled>
         <p>Todos os direitos reservados - Kenzie Academy Brasil</p>
       </FooterStyled>

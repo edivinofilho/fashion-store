@@ -1,19 +1,19 @@
 import { styled } from "styled-components"
 
 export const InputStyled = styled.input`
-    background-color: ${({ theme }) => theme.colors.grey};
-    color: grey;
+    background-color: #EEEEEE;
+    color: rgba(0, 0, 0, 0.5);
     padding: 15px;
     width: 100%;
     height: 78px;
-    border: 1px solid ${({ theme }) => theme.colors.grey};
+    border: #EEEEEE;
 
     &::placeholder{
-        color: grey;
+        color: rgba(0, 0, 0, 0.5);
     }
 
      &:hover, &:focus{
-        border: 1px solid grey;
+        border: 1px solid #EEEEEE;
         outline: none;
     }
 `

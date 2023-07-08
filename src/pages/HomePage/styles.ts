@@ -50,7 +50,6 @@ export const MainStyled = styled.main`
     }
 
     @media (max-width: 1243px){
-
         .containerHome{
             justify-content: center;
         }
