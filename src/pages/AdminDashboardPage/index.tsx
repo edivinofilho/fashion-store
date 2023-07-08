@@ -11,9 +11,9 @@ import { FooterStyled } from "../../components/Footer/styles"
 import { ButtonStyled } from "../../styles/Button"
 import { StyledTopSectionContainer } from "./styles"
 import { StyledProductList } from "../../styles/UlStyled"
-import plusImg from "../../src/assets/plusSign.svg"
-import ediButtonImg from "../../src/assets/editButton.svg"
-import deleteImg from "../../src/assets/deleteButton.svg"
+import plusImg from "../../../src/assets/plusSign.svg"
+import ediButtonImg from "../../../src/assets/editButton.svg"
+import deleteImg from "../../../src/assets/deleteButton.svg"
 
 export const AdminDashboardPage = () => {
   

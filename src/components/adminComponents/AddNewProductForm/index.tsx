@@ -7,7 +7,7 @@ import { ProductContext } from "../../../providers/ProductsContext/ProductsConte
 import { StyledAddNewProductForm } from "./styles"
 import { ButtonStyled } from "../../../styles/Button"
 import { TextArea } from "../TextArea"
-import plusImg from "../../../src/assets/plusSign.svg"
+import plusImg from "../../../../src/assets/plusSign.svg"
 
 
 export const AddNewProductForm = () => {
