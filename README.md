@@ -6,6 +6,7 @@ Este projeto foi desenvolvido em equipe pelos seguintes membros:
 - Guilherme Vinicius
 - Felipe Costa
 - Yghor Serur
+- Caio Santos
 
 ***Supervisão por:***
 Raphael Souza
