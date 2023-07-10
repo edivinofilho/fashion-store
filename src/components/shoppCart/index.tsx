@@ -4,7 +4,6 @@ import { ProductContext } from "../../providers/ProductsContext/ProductsContex.t
 import { UlStyled } from "./styles.ts"
 import { IProduct } from "../../providers/ProductsContext/@types.ts"
 import image from "../../assets/buttonRemove.svg"
-import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 export const ModalCart = () => {

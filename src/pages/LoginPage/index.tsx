@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "../../components/Input"
 import { HeaderDefault } from "../../components/Header/index.tsx"
@@ -8,11 +8,11 @@ import { ButtonStyled } from "../../styles/Button.ts"
 import img from "../../assets/imgCover.svg"
 import { StyledFormLogin, LoginPageTitle, StyleSection } from "./style"
 import { TLoginFormValues, loginFormSchema } from "./LoginSchema"
-import { IFormData, UserContext } from "../../providers/UserContext/UserContext.tsx"
+import { UserContext } from "../../providers/UserContext/UserContext.tsx"
 
 export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<TLoginFormValues>({ resolver: zodResolver(loginFormSchema) })
-  const { login, navigation, AutoLogin } = useContext(UserContext)
+  const { login, navigation } = useContext(UserContext)
 
   const registerPage = () => {
 
