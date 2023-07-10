@@ -32,5 +32,5 @@ export interface IProductContextValue {
   currentProduct: IProduct | null,
   setCurrentProduct: React.Dispatch<React.SetStateAction<IProduct | null>>,
   setlistCart: React.Dispatch<React.SetStateAction<IProduct[] | null>>,
-  Toasty: (text: string, type: "success" | "error", position: "top-left" | "top-right") => void,
+  // Toasty: (text: string, type: "success" | "error", position: "top-left" | "top-right") => void,
 }

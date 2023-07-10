@@ -43,7 +43,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   }
 
   useEffect(() => {
-    const userDetailsString = localStorage.getItem("@User")
+    const userDetailsString = localStorage.getItem("@User");
   
     if (userDetailsString) {
       const userDetails = JSON.parse(userDetailsString)
@@ -118,7 +118,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser, login, navigation, userRegister, logout, loading }}>
+    <UserContext.Provider value={{ Toasty, user, setUser, login, navigation, userRegister, logout, loading }}>
       {children}
     </UserContext.Provider>
   )

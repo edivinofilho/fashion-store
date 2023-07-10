@@ -3,8 +3,8 @@ import { api } from "../../services/api"
 import { IProduct, IProductProviderProps, IProductContextValue } from "./@types"
 import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema"
 import { TeditProductFormSchema } from "../../components/adminComponents/EditProductForm/editProductSchema"
-import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { UserContext } from "../UserContext/UserContext"
 
 export const ProductContext = createContext({} as IProductContextValue)
 
@@ -21,7 +21,7 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
 
   const [listCart, setlistCart] = useState<IProduct[] | null>(null)
 
-  const { Toasty } = useContext(ProductContext)
+  const { Toasty } = useContext(UserContext)
 
 
   useEffect(() => {
@@ -122,7 +122,7 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
   }
 
   return (
-    <ProductContext.Provider value={{ Toasty, isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct }}>
+    <ProductContext.Provider value={{ isModal, setisModal, listCart, setlistCart, productList, currentProduct, setCurrentProduct, removeProduct, isModalNewProductOpen, setIsModalNewProductsOpen, submitAddNewProduct, submitEditProduct, isModalEditProduct, setisModalEditProduct }}>
       {children}
     </ProductContext.Provider>
   )

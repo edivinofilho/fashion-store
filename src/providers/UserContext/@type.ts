@@ -36,6 +36,7 @@ export interface IUserContext {
   navigation: NavigateFunction
   logout: () => void
   loading: boolean | IUserContext | true | false
+  Toasty: (text: string, type: "success" | "error", position: "top-left" | "top-right") => void
 }
 
 export interface IUserRegisterResponse {

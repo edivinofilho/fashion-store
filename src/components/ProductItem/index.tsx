@@ -5,14 +5,15 @@ import { useContext } from "react"
 import { ProductContext } from "../../providers/ProductsContext/ProductsContex.tsx"
 import { Link } from "react-router-dom"
 import { ButtonStyled } from "../../styles/Button.ts"
+import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify"
 
 interface IProductList {
   item: IProduct
 }
 
 export const ProductItem = ({ item }: IProductList) => {
-
-  const { setCurrentProduct, Toasty } = useContext(ProductContext)
+  const { setCurrentProduct } = useContext(ProductContext)
 
   const addCart = () => {
     const storage = localStorage.getItem("@cartFashionStore")
@@ -20,7 +21,17 @@ export const ProductItem = ({ item }: IProductList) => {
       const newList: IProduct[] = JSON.parse(storage)
       const limiter = newList?.find((element) => element.id == item.id)
       if (limiter == undefined) {
-        Toasty("Produto Adicionado!", "success", "top-left")
+        toast.success("Produto Adicionado!", {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
+       
         if (newList != null && item != null) {
           const list: IProduct[] = [...newList, item]
           localStorage.setItem("@cartFashionStore", JSON.stringify(list))
@@ -28,10 +39,29 @@ export const ProductItem = ({ item }: IProductList) => {
           localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
         }
       } else {
-        Toasty("Produto já esta no carrinho!", "error", "top-left")
+        toast.error("Produto já esta no carrinho!", {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
+        
       }
     } else {
-      Toasty("Produto Adicionado!", "success", "top-left")
+      toast.success("Produto Adicionado!", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
       localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
     }
   }
