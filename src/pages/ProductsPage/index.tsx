@@ -44,7 +44,7 @@ export const ProductsPage = () => {
       if (currentProduct !== null) {
         const limiter = newList?.find((element) => element.id === currentProduct.id)
         if (limiter == undefined) {
-          Toasty("Produto Adicionado!", "sucess")
+          Toasty("Produto Adicionado!", "success", "top-left")
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
             localStorage.setItem("@cartFashionStore", JSON.stringify(list))
@@ -52,11 +52,11 @@ export const ProductsPage = () => {
             localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
           }
         } else {
-          Toasty("Produto já esta no carrinho!", "error")
+          Toasty("Produto já esta no carrinho!", "error", "top-left")
         }
       }
     } else {
-      Toasty("Produto Adicionado!", "sucess")
+      Toasty("Produto Adicionado!", "success", "top-left")
       localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
     }
   }

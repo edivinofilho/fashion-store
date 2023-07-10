@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useContext } from "react"
 import { api } from "../../services/api"
 import { IProduct, IProductProviderProps, IProductContextValue } from "./@types"
 import { TAddNewProductForm } from "../../components/adminComponents/AddNewProductForm/addNewProductFormSchema"
@@ -21,6 +21,9 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
 
   const [listCart, setlistCart] = useState<IProduct[] | null>(null)
 
+  const { Toasty } = useContext(ProductContext)
+
+
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -34,32 +37,6 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
     loadProducts()
 
   }, [])
-
-  const Toasty = (text: string, type: "sucess" | "error") => {
-    if (type === "sucess") {
-      toast.success(`${text}`, {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
-    } else {
-      toast.error(`${text}`, {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
-    }
-  }
 
   const removeProduct = async (itemId: number) => {
     const token = localStorage.getItem("@AcessToken")
@@ -76,29 +53,11 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
 
         setProductList(updatedProductList)
 
-        toast.success("Produto removido com sucesso", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
-
+        Toasty("Produto removido com sucesso", "success", "top-right")
+       
       } catch (error) {
 
-        toast.error("Ups, houve um problema, tente novamente", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
+        Toasty("Ups, houve um problema, tente novamente", "error", "top-right")
       }
     }
   }
@@ -120,28 +79,11 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
       setProductList(updatedProductList)
       setIsModalNewProductsOpen(false)
 
-      toast.success("Produto adicionado com sucesso", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Produto adicionado com sucesso", "success", "top-right")
 
     } catch (error) {
-      toast.error("Ups, houve um problema, tente novamente", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Ups, houve um problema, tente novamente", "error", "top-right")
+      
       setIsModalNewProductsOpen(false)
     }
   }
@@ -168,30 +110,12 @@ export const ProductsProvider = ({ children }: IProductProviderProps) => {
           setProductList(updatedProductList)
         }
       }
-
-      toast.success("Produto editado com sucesso", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      
+      Toasty("Produto editado com sucesso", "success", "top-right")
 
     } catch (error) {
 
-      toast.error("Ups, houve um problema, tente novamente", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Ups, houve um problema, tente novamente", "error", "top-right")
     }
 
     setisModalEditProduct(false)

@@ -20,7 +20,7 @@ export const ProductItem = ({ item }: IProductList) => {
       const newList: IProduct[] = JSON.parse(storage)
       const limiter = newList?.find((element) => element.id == item.id)
       if (limiter == undefined) {
-        Toasty("Produto Adicionado!", "sucess")
+        Toasty("Produto Adicionado!", "success", "top-left")
         if (newList != null && item != null) {
           const list: IProduct[] = [...newList, item]
           localStorage.setItem("@cartFashionStore", JSON.stringify(list))
@@ -28,10 +28,10 @@ export const ProductItem = ({ item }: IProductList) => {
           localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
         }
       } else {
-        Toasty("Produto já esta no carrinho!", "error")
+        Toasty("Produto já esta no carrinho!", "error", "top-left")
       }
     } else {
-      Toasty("Produto Adicionado!", "sucess")
+      Toasty("Produto Adicionado!", "success", "top-left")
       localStorage.setItem("@cartFashionStore", JSON.stringify([item]))
     }
   }

@@ -1,56 +1,75 @@
-import { createContext, useState } from "react"
-import { NavigateFunction, useNavigate } from "react-router-dom"
+import { createContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { SubmitHandler } from "react-hook-form"
+import { IUserContext, IUserProviderProps, IUser, IFormData, IUserRegisterResponse } from "./@type"
 
-interface IUserProviderProps {
-  children: React.ReactNode
-}
-
-export interface IFormData {
-  email: string
-  password: string
-}
-
-interface IUser {
-  accessToken: string
-  user: {
-    id: number
-    name: string
-    email: string
-  }
-}
-interface IResgisterFormData {
-  email: string
-  password: string
-  name: string
-  confirmPassword: string
-}
-
-interface IUserContext {
-  setUser: React.Dispatch<React.SetStateAction<IUser | null>>
-  user: IUser | null
-  login: SubmitHandler<IFormData>
-  userRegister: (
-    formData: IResgisterFormData,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => Promise<void>
-  navigation: NavigateFunction
-  logout: () => void
-}
-
-interface IUserRegisterResponse {
-  accessToken: string
-  user: IUser
-}
 
 export const UserContext = createContext({} as IUserContext)
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null)
   const navigation = useNavigate()
+  const [loading, setLoading] = useState<IUserContext | true | false>(false)
+
+  const currentPath = window.location.pathname
+
+  const Toasty = (text: string, type: "success" | "error", position: "top-left" | "top-right") => {
+    if (type === "success") {
+      toast.success(`${text}`, {
+        position: position,
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+    } else {
+      toast.error(`${text}`, {
+        position: position,
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
+    }
+  }
+
+  useEffect(() => {
+    const userDetailsString = localStorage.getItem("@User")
+  
+    if (userDetailsString) {
+      const userDetails = JSON.parse(userDetailsString)
+      const { email, confirmPassword } = userDetails
+
+      const loadUser = async () => {
+        try {
+          setLoading(true)
+          const { data } = await api.post("/login", {
+              email,
+              password: confirmPassword,
+          })
+
+          setUser(data)
+  
+          navigation(currentPath)
+        } catch (error) {
+          Toasty("Ups, algo deu errado, tente novamente", "error", "top-left")
+        } finally {
+          setLoading(false)
+        }
+      }
+  
+      loadUser()
+    }
+  }, [])
 
   const login: SubmitHandler<IFormData> = async (formData: IFormData) => {
 
@@ -61,42 +80,16 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@User", JSON.stringify(data.user))
       navigation("/admin_welcome")
       setUser(data)
-      toast.success("Usuário logado", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Usuário logado", "success", "top-right")
+
     } catch (error: any) {
 
       if (error.response.data == "Incorrect password") {
+        Toasty("Senha incorreta", "error", "top-right")
 
-        toast.error("Senha incorreta", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
       } else if (error.response.data == "Cannot find user") {
+        Toasty("Usuário não encontrado", "error", "top-right")
 
-        toast.error("Usuário não encontrado", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
       }
     }
   }
@@ -107,50 +100,25 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true)
       await api.post<IUserRegisterResponse>("/users", formData)
-      toast.success("Cadastro efetuado com sucesso", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Cadastro efetuado com sucesso", "success", "top-right") 
       navigation("/login")
+
     } catch (error) {
-      toast.error("Algo deu errado, tente novamente", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      })
+      Toasty("Algo deu errado, tente novamente", "error", "top-right") 
+      
       window.location.reload()
     }
   }
 
-  const logout = () => {
+  const logout = ( ) => {
     localStorage.removeItem("@AcessToken")
     localStorage.removeItem("@User")
 
-    toast.success("Saindo...", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    })
+    Toasty("Saindo...", "success", "top-right") 
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser, login, navigation, userRegister, logout }}>
+    <UserContext.Provider value={{ user, setUser, login, navigation, userRegister, logout, loading }}>
       {children}
     </UserContext.Provider>
   )
