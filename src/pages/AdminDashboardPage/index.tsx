@@ -17,7 +17,7 @@ import deleteImg from "../../../src/assets/deleteButton.svg"
 
 export const AdminDashboardPage = () => {
 
-  const productList: IProduct[] | null = useContext(ProductContext).productList
+  const productList: IProduct[] = useContext(ProductContext).productList ||[]
 
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null)
 
@@ -34,7 +34,7 @@ export const AdminDashboardPage = () => {
       </StyledTopSectionContainer>
       <main>
         <StyledProductList styledDiv="adminPage">
-          {productList ? productList.map((product) => (
+          {productList.length > 0 ? productList.map((product) => (
             <li key={product.id}>
               <div>
                 <img src={product.image} />
@@ -53,7 +53,7 @@ export const AdminDashboardPage = () => {
                 }>{<img src={deleteImg} alt="Botão para remover produto" className="buttonIcon" />}</button>
               </div>
             </li>
-          )) : null}
+          )) : <h2>Nenhum produto diponível no momento</h2>}
         </StyledProductList>
         {isModalNewProductOpen ?
           <Modal title="NOVO PRODUTO" styleModal="adminModal" setModalState={() => setIsModalNewProductsOpen(false)}>
