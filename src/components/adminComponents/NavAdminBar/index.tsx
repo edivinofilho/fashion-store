@@ -20,7 +20,7 @@ export const NavAdminBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/" onClick={logout}>
+          <Link to="/" onClick={logout}> 
             Logout
           </Link>
         </li>

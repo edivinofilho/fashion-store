@@ -11,7 +11,7 @@ import { ButtonStyled } from "../../styles/Button.ts"
 
 export const HomePage = () => {
 
-  const { productList, isModal } = useContext(ProductContext)
+  const { productList = [], isModal } = useContext(ProductContext)
 
   return (
     <>
@@ -26,7 +26,7 @@ export const HomePage = () => {
         </div>
         <h2>PRODUTOS EM DESTAQUE</h2>
         <StyledProductList styledDiv="otherPage" >
-          {productList ? productList.map((product) => (<ProductItem key={product.id} item={product} />)) : null}
+          {productList && productList.length > 0 ? productList.map((product) => (<ProductItem key={product.id} item={product} />)) : <h2 className="noProduct">Nenhum produto disponível do momento</h2>}
         </StyledProductList>
         {isModal ? <ModalCart /> : null}
       </MainStyled>

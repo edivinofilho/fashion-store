@@ -29,9 +29,9 @@ export const ButtonStyled = styled.button<IStyledButtonProps>`
                     border: 1px solid #FFFFFF;
 
                     &:hover{
-                        background-color: #EEEEEE;
-                        color: #000000;
-                        border: 1px solid #EEEEEE;
+                        background-color: #5f5f5f;
+                        color: #FFFFFF;
+                        border: 1px solid #000000;
                     }
                 `
         }

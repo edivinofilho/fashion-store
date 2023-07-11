@@ -49,6 +49,10 @@ export const MainStyled = styled.main`
         ${letterTitle2}
     }
 
+    .noProduct {
+      font-size: 2.5rem;
+    }
+
     @media (max-width: 1243px){
         .containerHome{
             justify-content: center;

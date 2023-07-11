@@ -5,10 +5,12 @@ import { UlStyled } from "./styles.ts"
 import { IProduct } from "../../providers/ProductsContext/@types.ts"
 import image from "../../assets/buttonRemove.svg"
 import "react-toastify/dist/ReactToastify.css"
+import { UserContext } from "../../providers/UserContext/UserContext.tsx"
 
 export const ModalCart = () => {
 
-  const { setisModal, listCart, setlistCart, Toasty } = useContext(ProductContext)
+  const { setisModal, listCart, setlistCart } = useContext(ProductContext)
+  const { Toasty } = useContext(UserContext)
 
   const value: number | undefined = listCart?.reduce((acc, item) => acc + item.price, 0)
 
@@ -17,7 +19,7 @@ export const ModalCart = () => {
       const newList: IProduct[] = listCart.filter((product) => product.id != id)
       localStorage.setItem("@cartFashionStore", JSON.stringify(newList))
       setlistCart(newList)
-      Toasty("Produto Removido!", "error")
+      Toasty("Produto Removido!", "error", "top-left")
     }
   }
 

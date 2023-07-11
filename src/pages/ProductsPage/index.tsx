@@ -11,11 +11,12 @@ import { ModalCart } from "../../components/shoppCart/index.tsx"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { api } from "../../services/api.ts"
 import { ButtonStyled } from "../../styles/Button.ts"
+import { toast } from "react-toastify"
 
 export const ProductsPage = () => {
 
-  const { productList, currentProduct, isModal, setCurrentProduct, Toasty } = useContext(ProductContext)
-
+  const { productList, currentProduct, isModal, setCurrentProduct} = useContext(ProductContext)
+  
   const navigate = useNavigate()
 
   let { id } = useParams()
@@ -44,7 +45,17 @@ export const ProductsPage = () => {
       if (currentProduct !== null) {
         const limiter = newList?.find((element) => element.id === currentProduct.id)
         if (limiter == undefined) {
-          Toasty("Produto Adicionado!", "sucess")
+          toast.success("Produto Adicionado!", {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
+
           if (newList != null) {
             const list: IProduct[] = [...newList, currentProduct]
             localStorage.setItem("@cartFashionStore", JSON.stringify(list))
@@ -52,11 +63,30 @@ export const ProductsPage = () => {
             localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
           }
         } else {
-          Toasty("Produto já esta no carrinho!", "error")
+          toast.success("Produto já esta no carrinho!", {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
+          
         }
       }
     } else {
-      Toasty("Produto Adicionado!", "sucess")
+      toast.success("Produto Adicionado!", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      })
       localStorage.setItem("@cartFashionStore", JSON.stringify([currentProduct]))
     }
   }
